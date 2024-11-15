@@ -70,6 +70,18 @@
             border-radius: 0 5px 5px 0;
             cursor: pointer;
         }
+        /* Styles de la navigation */
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .nav-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -84,17 +96,30 @@
             <button onclick="searchArticles()">Rechercher</button>
         </div>
 
+        <!-- Carte du jeu Assassin's Creed Japon -->
+        <div class="game-card" data-title="Assassin's Creed Japon">
+            <h2>Assassin's Creed : L'ère Sengoku</h2>
+            <p><strong>Date de sortie :</strong> 14 février 2025</p>
+            <p>Après de nombreuses années d'attente, la licence Assassin's Creed arrive enfin au Japon durant l'ère Sengoku. Le jeu propose deux protagonistes : Naoe, une shinobi experte en infiltration, et Yasuke, un samouraï noir qui privilégie le combat direct. Le jeu se déroule dans un vaste monde ouvert avec des environnements variés, de villes portuaires aux montagnes, et intègre des effets climatiques et des saisons changeantes.</p>
+        </div>
+
         <!-- Carte du jeu S.T.A.L.K.E.R. 2 sans image -->
         <div class="game-card" data-title="S.T.A.L.K.E.R. 2 Heart of Chornobyl">
             <h2>S.T.A.L.K.E.R. 2: Heart of Chornobyl</h2>
             <p><strong>Date de sortie :</strong> 20 novembre 2024</p>
-            <p>S.T.A.L.K.E.R. 2 sur PC est un jeu de tir à la première personne qui est la suite du désormais célèbre S.T.A.L.K.E.R : Shadow of Chernobyl. Ce jeu vous plonge dans l'univers de la zone de Tchernobyl, ville d'Ukraine ayant été la victime d'un réacteur en fusion en 1986. Vous devez alors visiter l'endroit pour découvrir les secrets qui s'y cachent tout en éliminant la menace ennemie.</p>
+            <p>S.T.A.L.K.E.R. 2 sur PC est un jeu de tir à la première personne qui est la suite du célèbre S.T.A.L.K.E.R : Shadow of Chernobyl. Ce jeu vous plonge dans la zone de Tchernobyl en Ukraine, où vous devez explorer les lieux pour découvrir leurs secrets tout en éliminant les ennemis.</p>
         </div>
 
         <!-- Autres actualités et articles de jeux vidéo -->
         <div id="news-container">
             <!-- Les articles seront ajoutés ici dynamiquement -->
         </div>
+    </div>
+
+    <!-- Liens de navigation vers les autres pages -->
+    <div class="nav-links">
+        <a href="page1.html">Page 1</a>
+        <a href="page2.html">Page 2</a>
     </div>
 
     <script>
