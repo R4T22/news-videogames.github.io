@@ -48,10 +48,12 @@
         p {
             color: #666;
         }
-        /* Barre de recherche */
+        /* Barre de recherche et sélecteurs */
         .search-bar {
             display: flex;
             justify-content: center;
+            align-items: center;
+            gap: 10px;
             margin-bottom: 20px;
         }
         .search-bar input {
@@ -68,6 +70,13 @@
             background-color: #333;
             color: #fff;
             border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+        .search-bar select {
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
             cursor: pointer;
         }
         /* Styles de la navigation */
@@ -89,11 +98,27 @@
         <h1>Actualités des Jeux Vidéo</h1>
     </header>
 
-    <!-- Barre de recherche -->
+    <!-- Barre de recherche, sélection DLC et type de DLC -->
     <div class="container">
         <div class="search-bar">
             <input type="text" id="search-input" placeholder="Rechercher un jeu ou un article...">
             <button onclick="searchArticles()">Rechercher</button>
+
+            <!-- Sélecteur de DLC -->
+            <select id="dlc-select">
+                <option value="">Sélectionner un DLC</option>
+                <option value="dlc1">DLC 1</option>
+                <option value="dlc2">DLC 2</option>
+                <option value="dlc3">DLC 3</option>
+            </select>
+
+            <!-- Sélecteur du type de DLC -->
+            <select id="dlc-type-select">
+                <option value="">Type de DLC</option>
+                <option value="extension">Extension</option>
+                <option value="pack">Pack de contenu</option>
+                <option value="skin">Pack de skins</option>
+            </select>
         </div>
 
         <!-- Carte du jeu Assassin's Creed Japon -->
@@ -103,7 +128,7 @@
             <p>Après de nombreuses années d'attente, la licence Assassin's Creed arrive enfin au Japon durant l'ère Sengoku. Le jeu propose deux protagonistes : Naoe, une shinobi experte en infiltration, et Yasuke, un samouraï noir qui privilégie le combat direct. Le jeu se déroule dans un vaste monde ouvert avec des environnements variés, de villes portuaires aux montagnes, et intègre des effets climatiques et des saisons changeantes.</p>
         </div>
 
-        <!-- Carte du jeu S.T.A.L.K.E.R. 2 sans image -->
+        <!-- Carte du jeu S.T.A.L.K.E.R. 2 -->
         <div class="game-card" data-title="S.T.A.L.K.E.R. 2 Heart of Chornobyl">
             <h2>S.T.A.L.K.E.R. 2: Heart of Chornobyl</h2>
             <p><strong>Date de sortie :</strong> 20 novembre 2024</p>
