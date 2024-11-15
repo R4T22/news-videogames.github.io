@@ -3,33 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Z news video games</title>
+    <title>Actualités Jeux Vidéo</title>
     <style>
+        /* Styles de base */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #f9f9f9;
             margin: 0;
             padding: 0;
         }
         header {
             background-color: #333;
             color: #fff;
-            padding: 10px 0;
+            padding: 20px 0;
             text-align: center;
         }
-        .container {
-            width: 80%;
-            margin: 20px auto;
+        h1 {
+            margin: 0;
         }
-        .news {
+        /* Conteneur de contenu */
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 10px;
+        }
+        /* Styles des cartes de news */
+        .news-card, .game-card {
             background-color: #fff;
             padding: 20px;
             margin-bottom: 20px;
             border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            display: flex;
+            gap: 20px;
+            flex-direction: column;
+            text-align: center;
+        }
+        .news-card img, .game-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
         }
         h2 {
             color: #333;
+            font-size: 1.4em;
         }
         p {
             color: #666;
@@ -41,143 +60,19 @@
         <h1>Actualités des Jeux Vidéo</h1>
     </header>
 
-    <div class="container" id="news-container">
-        <!-- Les articles seront injectés ici par JavaScript -->
+    <div class="container">
+        <!-- Carte du jeu S.T.A.L.K.E.R. 2 -->
+        <div class="game-card">
+            <img src="/mnt/data/image.png" alt="S.T.A.L.K.E.R. 2: Heart of Chornobyl">
+            <h2>S.T.A.L.K.E.R. 2: Heart of Chornobyl</h2>
+            <p><strong>Date de sortie :</strong> 20 novembre 2024</p>
+            <p>S.T.A.L.K.E.R. 2 sur PC est un jeu de tir à la première personne qui est la suite du désormais célèbre S.T.A.L.K.E.R : Shadow of Chernobyl. Ce jeu vous plonge dans l'univers de la zone de Tchernobyl, ville d'Ukraine ayant été la victime d'un réacteur en fusion en 1986. Vous devez alors visiter l'endroit pour découvrir les secrets qui s'y cachent tout en éliminant la menace ennemie.</p>
+        </div>
+        
+        <!-- Autres actualités et articles de jeux vidéo -->
+        <div id="news-container">
+            <!-- Les articles seront ajoutés ici dynamiquement -->
+        </div>
     </div>
-
-    <script>
-        // Clé API et URL de l'API (remplacer par ta clé API personnelle)
-        const apiKey = 'ff11a205747248fb92f59b31b9990fc4';
-        const apiUrl = `https://newsapi.org/v2/everything?q=jeux%20video&language=fr&sortBy=publishedAt&apiKey=${apiKey}`;
-
-        // Fonction pour récupérer les actualités
-        async function fetchNews() {
-            const response = await fetch(apiUrl);
-            const data = await response.json();
-            displayNews(data.articles);
-      index.html
-<div class="pagination">
-    <button id="prev" onclick="changePage(-1)">Précédent</button>
-    <button id="next" onclick="changePage(1)">Suivant</button>
-</div>
-
-<script>
-    let currentPage = 1;
-
-    function fetchNews(page = 1) {
-        const apiUrl = `https://newsapi.org/v2/everything?q=jeux%20video&language=fr&sortBy=publishedAt&page=${page}&pageSize=5&apiKey=${apiKey}`;
-        fetch(apiUrl)
-            .then(response => response.json())
-            .then(data => displayNews(data.articles));
-    }
-
-    function changePage(direction) {
-        currentPage += direction;
-        fetchNews(currentPage);
-    }
-
-    fetchNews();
-</script>
-<div class="filters">
-    <label for="source">Source:</label>
-    <input type="text" id="source" placeholder="Entrer une source">
-
-    <label for="date">Date:</label>
-    <input type="date" id="date">
-    
-    <button onclick="applyFilters()">Appliquer les filtres</button>
-</div>
-
-<script>
-    function applyFilters() {
-        const source = document.getElementById('source').value;
-        const date = document.getElementById('date').value;
-        let apiUrl = `https://newsapi.org/v2/everything?q=jeux%20video&language=fr&sortBy=publishedAt&apiKey=${apiKey}`;
-
-        if (source) {
-            apiUrl += `&sources=${source}`;
-        }
-        if (date) {
-            apiUrl += `&from=${date}`;
-        }
-
-        fetch(apiUrl)
-            .then(response => response.json())
-            .then(data => displayNews(data.articles));
-    }
-</script>
-/* Styles par défaut pour grands écrans */
-body {
-    font-family: Arial, sans-serif;
-}
-
-.container {
-    width: 80%;
-    margin: 0 auto;
-}
-
-/* Responsive pour tablettes */
-@media (max-width: 768px) {
-    .container {
-        width: 90%;
-    }
-
-    .news {
-        padding: 15px;
-        font-size: 0.9em;
-    }
-}
-
-/* Responsive pour mobiles */
-@media (max-width: 480px) {
-    .container {
-        width: 100%;
-        padding: 0 10px;
-    }
-
-    h1 {
-        font-size: 1.5em;
-    }
-
-    .news {
-        padding: 10px;
-        font-size: 0.8em;
-    }
-}
-window.addEventListener('scroll', () => {
-    if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-        currentPage++;
-        fetchNews(currentPage);
-    }
-});
-function displayNews(articles) {
-    const newsContainer = document.getElementById('news-container');
-    newsContainer.innerHTML = '';
-
-    articles.forEach(article => {
-        const newsDiv = document.createElement('div');
-        newsDiv.classList.add('news');
-
-        const img = document.createElement('img');
-        img.src = article.urlToImage || 'default-image.jpg';  // Utilise une image par défaut si aucune n'est disponible
-        img.alt = article.title;
-        img.style.width = '100%';  // Ajuste la taille des images
-
-        const title = document.createElement('h2');
-        title.innerText = article.title;
-
-        const description = document.createElement('p');
-        description.innerText = article.description || "Aucun résumé disponible.";
-
-        const link = document.createElement('a');
-        link.href = article.url;
-        link.innerText = "Lire la suite";
-        link.target = "_blank";
-
-        newsDiv.appendChild(img);  // Ajouter l'image
-        newsDiv.appendChild(title);
-        newsDiv.appendChild(description);
-        newsDiv.appendChild(link);
-        newsContainer.appendChild(newsDiv);
-    });
-}
+</body>
+</html>
