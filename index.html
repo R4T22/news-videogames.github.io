@@ -27,7 +27,7 @@
             margin: 20px auto;
             padding: 10px;
         }
-        .news, .categories {
+        .news {
             background-color: #fff;
             padding: 20px;
             margin-bottom: 20px;
@@ -47,17 +47,19 @@
             height: auto;
             border-radius: 8px;
         }
-        /* Barre de recherche et DLC */
+        /* Barre de recherche, DLC et catégories */
         .top-controls {
             display: flex;
             justify-content: space-between;
+            flex-wrap: wrap;
             margin-bottom: 20px;
         }
         .search-bar, .dlc-section, .categories-section {
             flex: 1;
             margin-right: 10px;
+            min-width: 250px;
         }
-        .search-bar input, .dlc-section select {
+        .search-bar input, .dlc-section select, .categories-section select {
             width: 100%;
             padding: 10px;
             font-size: 1em;
@@ -70,16 +72,7 @@
             color: #fff;
             border: none;
             cursor: pointer;
-        }
-        .categories-section {
-            flex: 2;
-        }
-        ul {
-            padding: 0;
-            list-style-type: none;
-        }
-        ul li {
-            margin: 5px 0;
+            width: 100%;
         }
     </style>
 </head>
@@ -91,7 +84,7 @@
 
     <!-- Conteneur principal -->
     <div class="container">
-        <!-- Barre de recherche et DLC -->
+        <!-- Barre de recherche, DLC et Catégories -->
         <div class="top-controls">
             <!-- Barre de recherche -->
             <div class="search-bar">
@@ -112,37 +105,35 @@
             <!-- Catégories -->
             <div class="categories-section">
                 <h2>Catégories</h2>
-                <ul>
-                    <li><strong>Sections spéciales</strong></li>
-                    <li>Free-to-play</li>
-                    <li>Démos</li>
-                    <li>Accès anticipé</li>
-                    <li>Steam Deck</li>
-                    <li>Parfaits pour Steam Deck</li>
-                    <li>Compatibilité avec un contrôleur</li>
-                    <li>Remote Play</li>
-                    <li>VR</li>
-                    <li>Matériel VR</li>
-                    <li>Logiciels</li>
-                    <li>Bandes-son</li>
-                    <li>macOS</li>
-                    <li>SteamOS + Linux</li>
-                    <li>Pour PC Café</li>
-                    <li><strong>Genres</strong></li>
-                    <li>Action</li>
-                    <li>Arcade et rythme</li>
-                    <li>Combat et arts martiaux</li>
-                    <li>Hack 'n' slash</li>
-                    <li>Plateforme et parcours</li>
-                    <li>Shoot 'Em Up</li>
-                    <li>Tir à la 1ʳᵉ personne</li>
-                    <li>Tir à la 3ᵉ personne</li>
-                    <li>Aventure</li>
-                    <li>RPG</li>
-                    <li>Simulation</li>
-                    <li>Stratégie</li>
-                    <li>Sport et course</li>
-                </ul>
+                <select id="categories">
+                    <option value="" disabled selected>Choisir une catégorie</option>
+                    <optgroup label="Sections spéciales">
+                        <option value="free-to-play">Free-to-play</option>
+                        <option value="demos">Démos</option>
+                        <option value="early-access">Accès anticipé</option>
+                        <option value="steam-deck">Steam Deck</option>
+                        <option value="controller-compatible">Compatibilité avec un contrôleur</option>
+                        <option value="remote-play">Remote Play</option>
+                        <option value="vr">VR</option>
+                    </optgroup>
+                    <optgroup label="Genres">
+                        <option value="action">Action</option>
+                        <option value="arcade">Arcade et rythme</option>
+                        <option value="combat">Combat et arts martiaux</option>
+                        <option value="fps">Tir à la 1ʳᵉ personne</option>
+                        <option value="rpg">RPG</option>
+                        <option value="simulation">Simulation</option>
+                        <option value="strategy">Stratégie</option>
+                        <option value="sports">Sport et course</option>
+                    </optgroup>
+                    <optgroup label="Thèmes">
+                        <option value="anime">Anime</option>
+                        <option value="horror">Horreur</option>
+                        <option value="open-world">Monde ouvert</option>
+                        <option value="sci-fi">Science-fiction</option>
+                        <option value="survival">Survie</option>
+                    </optgroup>
+                </select>
             </div>
         </div>
 
@@ -168,12 +159,18 @@
             <p>Borderlands 4 est le quatrième épisode de la saga de jeu de tir développée par Gearbox. Le projet a été officialisé à l'occasion du rachat du studio par 2K.</p>
         </div>
     </div>
+
+    <script>
+        function search() {
+            const query = document.getElementById('search').value.toLowerCase();
+            alert(`Recherche lancée pour : ${query}`);
+        }
+
+        // Menu Catégories - Fonction exemple
+        document.getElementById('categories').addEventListener('change', (e) => {
+            const selectedCategory = e.target.value;
+            alert(`Vous avez choisi la catégorie : ${selectedCategory}`);
+        });
+    </script>
 </body>
-<script>
-    function search() {
-        const query = document.getElementById('search').value.toLowerCase();
-        alert(`Recherche lancée pour : ${query}`);
-        // Implémentation future : filtrer les actualités selon le contenu.
-    }
-</script>
 </html>
