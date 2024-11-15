@@ -53,6 +53,28 @@
         p {
             color: #666;
         }
+        /* Barre de recherche */
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .search-bar input {
+            width: 60%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+        }
+        .search-bar button {
+            padding: 10px;
+            font-size: 1em;
+            border: none;
+            background-color: #333;
+            color: #fff;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -60,19 +82,75 @@
         <h1>Actualités des Jeux Vidéo</h1>
     </header>
 
+    <!-- Barre de recherche -->
     <div class="container">
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Rechercher un jeu ou un article...">
+            <button onclick="searchArticles()">Rechercher</button>
+        </div>
+
         <!-- Carte du jeu S.T.A.L.K.E.R. 2 -->
-        <div class="game-card">
+        <div class="game-card" data-title="S.T.A.L.K.E.R. 2 Heart of Chornobyl">
             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..." alt="S.T.A.L.K.E.R. 2: Heart of Chornobyl">
             <h2>S.T.A.L.K.E.R. 2: Heart of Chornobyl</h2>
             <p><strong>Date de sortie :</strong> 20 novembre 2024</p>
             <p>S.T.A.L.K.E.R. 2 sur PC est un jeu de tir à la première personne qui est la suite du désormais célèbre S.T.A.L.K.E.R : Shadow of Chernobyl. Ce jeu vous plonge dans l'univers de la zone de Tchernobyl, ville d'Ukraine ayant été la victime d'un réacteur en fusion en 1986. Vous devez alors visiter l'endroit pour découvrir les secrets qui s'y cachent tout en éliminant la menace ennemie.</p>
         </div>
-        
+
         <!-- Autres actualités et articles de jeux vidéo -->
         <div id="news-container">
             <!-- Les articles seront ajoutés ici dynamiquement -->
         </div>
     </div>
+
+    <script>
+        // Fonction de recherche pour filtrer les articles en fonction de l'entrée
+        function searchArticles() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const articles = document.querySelectorAll('.game-card, .news-card');
+            
+            articles.forEach(article => {
+                const title = article.getAttribute('data-title').toLowerCase();
+                if (title.includes(query)) {
+                    article.style.display = "block"; // Affiche l'article s'il correspond à la recherche
+                } else {
+                    article.style.display = "none";  // Masque l'article s'il ne correspond pas
+                }
+            });
+        }
+
+        // Exemple de fonction pour ajouter dynamiquement des articles
+        function displayNews(articles) {
+            const newsContainer = document.getElementById('news-container');
+            newsContainer.innerHTML = ''; // Efface le contenu précédent
+
+            articles.forEach(article => {
+                const newsDiv = document.createElement('div');
+                newsDiv.classList.add('news-card');
+                newsDiv.setAttribute('data-title', article.title);
+
+                const img = document.createElement('img');
+                img.src = article.urlToImage || 'default-image.jpg';
+                img.alt = article.title;
+
+                const title = document.createElement('h2');
+                title.innerText = article.title;
+
+                const description = document.createElement('p');
+                description.innerText = article.description || "Aucun résumé disponible.";
+
+                const link = document.createElement('a');
+                link.href = article.url;
+                link.innerText = "Lire la suite";
+                link.target = "_blank";
+
+                newsDiv.appendChild(img);
+                newsDiv.appendChild(title);
+                newsDiv.appendChild(description);
+                newsDiv.appendChild(link);
+                newsContainer.appendChild(newsDiv);
+            });
+        }
+    </script>
 </body>
 </html>
