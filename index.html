@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualités des Jeux Vidéo</title>
+    <title>Jeux Vidéo - Borderlands 4</title>
     <style>
         /* Styles de base */
         body {
@@ -22,17 +22,18 @@
             margin: 0;
         }
         .container {
-            width: 90%;
+            width: 85%;
             max-width: 1200px;
             margin: 20px auto;
             padding: 10px;
         }
-        .news {
+        .game-card {
             background-color: #fff;
             padding: 20px;
             margin-bottom: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+            text-align: center;
         }
         h2 {
             color: #333;
@@ -42,135 +43,37 @@
             color: #666;
             font-size: 1.1em;
         }
-        .news img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-        /* Barre de recherche, DLC et catégories */
-        .top-controls {
+        .nav-links {
             display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
+            justify-content: center;
+            margin-top: 20px;
         }
-        .search-bar, .dlc-section, .categories-section {
-            flex: 1;
-            margin-right: 10px;
-            min-width: 250px;
-        }
-        .search-bar input, .dlc-section select, .categories-section select {
-            width: 100%;
-            padding: 10px;
-            font-size: 1em;
-            margin-bottom: 10px;
-        }
-        .search-bar button {
-            padding: 10px 20px;
-            font-size: 1em;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-            width: 100%;
+        .nav-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <!-- En-tête -->
     <header>
         <h1>Actualités des Jeux Vidéo</h1>
     </header>
 
-    <!-- Conteneur principal -->
     <div class="container">
-        <!-- Barre de recherche, DLC et Catégories -->
-        <div class="top-controls">
-            <!-- Barre de recherche -->
-            <div class="search-bar">
-                <h2>Barre de recherche</h2>
-                <input type="text" id="search" placeholder="Rechercher un jeu ou un article...">
-                <button onclick="search()">Rechercher</button>
-            </div>
-
-            <!-- DLC -->
-            <div class="dlc-section">
-                <h2>DLC</h2>
-                <p>Type de DLC :</p>
-                <select id="dlc-type">
-                    <option value="extensions">Extensions</option>
-                </select>
-            </div>
-
-            <!-- Catégories -->
-            <div class="categories-section">
-                <h2>Catégories</h2>
-                <select id="categories">
-                    <option value="" disabled selected>Choisir une catégorie</option>
-                    <optgroup label="Sections spéciales">
-                        <option value="free-to-play">Free-to-play</option>
-                        <option value="demos">Démos</option>
-                        <option value="early-access">Accès anticipé</option>
-                        <option value="steam-deck">Steam Deck</option>
-                        <option value="controller-compatible">Compatibilité avec un contrôleur</option>
-                        <option value="remote-play">Remote Play</option>
-                        <option value="vr">VR</option>
-                    </optgroup>
-                    <optgroup label="Genres">
-                        <option value="action">Action</option>
-                        <option value="arcade">Arcade et rythme</option>
-                        <option value="combat">Combat et arts martiaux</option>
-                        <option value="fps">Tir à la 1ʳᵉ personne</option>
-                        <option value="rpg">RPG</option>
-                        <option value="simulation">Simulation</option>
-                        <option value="strategy">Stratégie</option>
-                        <option value="sports">Sport et course</option>
-                    </optgroup>
-                    <optgroup label="Thèmes">
-                        <option value="anime">Anime</option>
-                        <option value="horror">Horreur</option>
-                        <option value="open-world">Monde ouvert</option>
-                        <option value="sci-fi">Science-fiction</option>
-                        <option value="survival">Survie</option>
-                    </optgroup>
-                </select>
-            </div>
-        </div>
-
-        <!-- Actualités -->
-        <div class="news">
-            <h2>S.T.A.L.K.E.R. 2</h2>
-            <p><strong>Date de sortie :</strong> 20 novembre 2024</p>
-            <img src="stalker2.jpg" alt="S.T.A.L.K.E.R. 2">
-            <p>S.T.A.L.K.E.R. 2 sur PC est un jeu de tir à la première personne qui est la suite du désormais célèbre S.T.A.L.K.E.R : Shadow of Chernobyl. Ce jeu vous plonge dans l'univers de la zone de Tchernobyl, ville d'Ukraine ayant été la victime d'un réacteur en fusion en 1986.</p>
-        </div>
-
-        <div class="news">
-            <h2>Assassin’s Creed Japon</h2>
-            <p><strong>Date de sortie :</strong> 14 février 2025</p>
-            <img src="ac_japan.jpg" alt="Assassin’s Creed Japon">
-            <p>Après de nombreuses années d'attente, la licence Assassin's Creed arrive enfin au Japon durant l'ère Sengoku avec ce titre. Deux protagonistes complémentaires : Naoe, une shinobi, et Yasuke, le célèbre samouraï noir.</p>
-        </div>
-
-        <div class="news">
+        <!-- Carte du jeu Borderlands 4 -->
+        <div class="game-card">
             <h2>Borderlands 4</h2>
             <p><strong>Date de sortie :</strong> 2025</p>
-            <img src="borderlands4.jpg" alt="Borderlands 4">
-            <p>Borderlands 4 est le quatrième épisode de la saga de jeu de tir développée par Gearbox. Le projet a été officialisé à l'occasion du rachat du studio par 2K.</p>
+            <p>Borderlands 4 est le quatrième épisode de la saga de jeu de tir développée par Gearbox. À l'occasion du rachat du studio par 2K, le projet a été officialisé et devrait dévoiler plus d'informations dans les mois, voire années à venir.</p>
         </div>
     </div>
 
-    <script>
-        function search() {
-            const query = document.getElementById('search').value.toLowerCase();
-            alert(`Recherche lancée pour : ${query}`);
-        }
-
-        // Menu Catégories - Fonction exemple
-        document.getElementById('categories').addEventListener('change', (e) => {
-            const selectedCategory = e.target.value;
-            alert(`Vous avez choisi la catégorie : ${selectedCategory}`);
-        });
-    </script>
+    <!-- Liens de navigation pour retourner à la première page -->
+    <div class="nav-links">
+        <a href="index.html">Page d'accueil</a>
+        <a href="page1.html">Page 1</a>
+    </div>
 </body>
 </html>
