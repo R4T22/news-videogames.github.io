@@ -41,11 +41,6 @@
             flex-direction: column;
             text-align: center;
         }
-        .news-card img, .game-card img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
         h2 {
             color: #333;
             font-size: 1.4em;
@@ -89,9 +84,8 @@
             <button onclick="searchArticles()">Rechercher</button>
         </div>
 
-        <!-- Carte du jeu S.T.A.L.K.E.R. 2 -->
+        <!-- Carte du jeu S.T.A.L.K.E.R. 2 sans image -->
         <div class="game-card" data-title="S.T.A.L.K.E.R. 2 Heart of Chornobyl">
-            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA..." alt="S.T.A.L.K.E.R. 2: Heart of Chornobyl">
             <h2>S.T.A.L.K.E.R. 2: Heart of Chornobyl</h2>
             <p><strong>Date de sortie :</strong> 20 novembre 2024</p>
             <p>S.T.A.L.K.E.R. 2 sur PC est un jeu de tir à la première personne qui est la suite du désormais célèbre S.T.A.L.K.E.R : Shadow of Chernobyl. Ce jeu vous plonge dans l'univers de la zone de Tchernobyl, ville d'Ukraine ayant été la victime d'un réacteur en fusion en 1986. Vous devez alors visiter l'endroit pour découvrir les secrets qui s'y cachent tout en éliminant la menace ennemie.</p>
@@ -129,10 +123,6 @@
                 newsDiv.classList.add('news-card');
                 newsDiv.setAttribute('data-title', article.title);
 
-                const img = document.createElement('img');
-                img.src = article.urlToImage || 'default-image.jpg';
-                img.alt = article.title;
-
                 const title = document.createElement('h2');
                 title.innerText = article.title;
 
@@ -144,7 +134,6 @@
                 link.innerText = "Lire la suite";
                 link.target = "_blank";
 
-                newsDiv.appendChild(img);
                 newsDiv.appendChild(title);
                 newsDiv.appendChild(description);
                 newsDiv.appendChild(link);
