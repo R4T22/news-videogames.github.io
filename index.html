@@ -47,32 +47,38 @@
             height: auto;
             border-radius: 8px;
         }
-        /* Barre de recherche, DLC, catégories et connexion */
+        /* Organisation de la barre supérieure */
         .top-controls {
             display: flex;
-            justify-content: space-between;
+            flex-direction: row;
+            justify-content: space-around;
             flex-wrap: wrap;
             margin-bottom: 20px;
         }
-        .search-bar, .dlc-section, .categories-section, .login-section {
+        .control-section {
             flex: 1;
-            margin-right: 10px;
             min-width: 250px;
+            margin: 0 10px;
+            text-align: center;
         }
-        .search-bar input, .dlc-section select, .categories-section select, .login-section input {
-            width: 100%;
+        .control-section h2 {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            color: #333;
+        }
+        .control-section input,
+        .control-section select,
+        .control-section button {
+            width: 90%;
             padding: 10px;
             font-size: 1em;
             margin-bottom: 10px;
         }
-        .search-bar button, .login-section button {
-            padding: 10px 20px;
-            font-size: 1em;
+        .control-section button {
             background-color: #333;
             color: #fff;
             border: none;
             cursor: pointer;
-            width: 100%;
         }
     </style>
 </head>
@@ -84,17 +90,17 @@
 
     <!-- Conteneur principal -->
     <div class="container">
-        <!-- Barre de recherche, DLC, Catégories et Connexion -->
+        <!-- Barre supérieure réorganisée -->
         <div class="top-controls">
             <!-- Barre de recherche -->
-            <div class="search-bar">
-                <h2>Barre de recherche</h2>
+            <div class="control-section search-bar">
+                <h2>Rechercher</h2>
                 <input type="text" id="search" placeholder="Rechercher un jeu ou un article...">
                 <button onclick="search()">Rechercher</button>
             </div>
 
             <!-- DLC -->
-            <div class="dlc-section">
+            <div class="control-section dlc-section">
                 <h2>DLC</h2>
                 <p>Type de DLC :</p>
                 <select id="dlc-type">
@@ -103,7 +109,7 @@
             </div>
 
             <!-- Catégories -->
-            <div class="categories-section">
+            <div class="control-section categories-section">
                 <h2>Catégories</h2>
                 <select id="categories">
                     <option value="" disabled selected>Choisir une catégorie</option>
@@ -137,10 +143,17 @@
             </div>
 
             <!-- Connexion -->
-            <div class="login-section">
+            <div class="control-section login-section">
                 <h2>Connexion</h2>
-                <input type="email" id="email" placeholder="Entrer votre adresse e-mail">
+                <input type="email" id="email-login" placeholder="Votre adresse e-mail">
                 <button onclick="login()">Se connecter</button>
+            </div>
+
+            <!-- Inscription -->
+            <div class="control-section signup-section">
+                <h2>Inscription</h2>
+                <input type="email" id="email-signup" placeholder="Votre adresse e-mail">
+                <button onclick="signup()">S'inscrire</button>
             </div>
         </div>
 
@@ -183,19 +196,16 @@
 
         // Fonction pour la connexion
         function login() {
-            const email = document.getElementById('email').value;
+            const email = document.getElementById('email-login').value;
             if (email) {
-                alert(`Bienvenue, ${email}`);
+                alert(`Connexion réussie pour : ${email}`);
             } else {
                 alert("Veuillez entrer une adresse e-mail valide.");
             }
         }
 
-        // Menu Catégories - Fonction exemple
-        document.getElementById('categories').addEventListener('change', (e) => {
-            const selectedCategory = e.target.value;
-            alert(`Vous avez choisi la catégorie : ${selectedCategory}`);
-        });
-    </script>
-</body>
-</html>
+        // Fonction pour l'inscription
+        function signup() {
+            const email = document.getElementById('email-signup').value;
+            if (email) {
+               
