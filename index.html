@@ -5,91 +5,115 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualités des Jeux Vidéo</title>
     <style>
-        /* Styles de base */
+        /* Styles globaux */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
             margin: 0;
             padding: 0;
+            background-color: #1b2838;
+            color: #c7d5e0;
         }
+
+        /* Header principal */
         header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
+            background-color: #171a21;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
-        h1 {
+        header h1 {
             margin: 0;
+            font-size: 1.5em;
+            color: #66c0f4;
         }
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 10px;
+        header .menu {
+            display: flex;
+            gap: 15px;
+        }
+        header .menu a {
+            color: #c7d5e0;
+            text-decoration: none;
+            font-size: 1em;
+            padding: 5px 10px;
+        }
+        header .menu a:hover {
+            background-color: #66c0f4;
+            color: #1b2838;
+            border-radius: 5px;
+        }
+        header button {
+            background-color: #66c0f4;
+            color: #1b2838;
+            padding: 5px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Disposition principale */
+        .main-container {
+            display: flex;
+            flex-direction: row;
+            margin-top: 10px;
+        }
+
+        /* Barre latérale gauche (catégories) */
+        .sidebar {
+            width: 250px;
+            background-color: #171a21;
+            padding: 15px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+        }
+        .sidebar h2 {
+            color: #66c0f4;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin-bottom: 10px;
+        }
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #c7d5e0;
+            font-size: 1em;
+            display: block;
+            padding: 5px 10px;
+        }
+        .sidebar ul li a:hover {
+            background-color: #66c0f4;
+            color: #1b2838;
+            border-radius: 5px;
+        }
+
+        /* Section principale */
+        .content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
         }
         .news {
-            background-color: #fff;
+            background-color: #2a475e;
             padding: 20px;
-            margin-bottom: 20px;
             border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-        }
-        h2 {
-            color: #333;
-            font-size: 1.5em;
-        }
-        p {
-            color: #666;
-            font-size: 1.1em;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
         }
         .news img {
             max-width: 100%;
-            height: auto;
             border-radius: 8px;
+            margin-bottom: 15px;
         }
-        /* Organisation de la barre supérieure */
-        .top-controls {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-        .control-section {
-            flex: 1;
-            min-width: 250px;
-            margin: 0 10px;
-            text-align: center;
-        }
-        .control-section h2 {
-            margin-bottom: 10px;
-            font-size: 1.2em;
-            color: #333;
-        }
-        .control-section input,
-        .control-section select,
-        .control-section button {
-            width: 90%;
-            padding: 10px;
-            font-size: 1em;
+        .news h2 {
+            color: #66c0f4;
             margin-bottom: 10px;
         }
-        .control-section button {
-            background-color: #333;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
-        /* Bouton Connexion/Inscription */
-        .auth-button {
-            background-color: #333;
-            color: #fff;
-            padding: 10px 20px;
-            font-size: 1em;
-            border: none;
-            cursor: pointer;
-            margin: 10px 0;
-        }
+
         /* Fenêtre modale */
         .modal {
             display: none;
@@ -98,53 +122,49 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.5);
+            background: rgba(0, 0, 0, 0.7);
             z-index: 1000;
         }
         .modal-content {
-            background: #fff;
+            background: #2a475e;
             margin: 10% auto;
             padding: 20px;
             width: 90%;
             max-width: 400px;
             border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
         .modal-content h2 {
+            color: #66c0f4;
             margin-bottom: 15px;
-            color: #333;
         }
         .modal-content input {
             width: 90%;
             padding: 10px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             font-size: 1em;
         }
         .modal-content button {
-            width: 90%;
-            padding: 10px;
-            font-size: 1em;
-            background-color: #333;
-            color: #fff;
+            background-color: #66c0f4;
+            color: #1b2838;
             border: none;
+            padding: 10px 20px;
+            font-size: 1em;
             cursor: pointer;
         }
         .close-modal {
             background: #aaa;
             color: #fff;
             border: none;
-            cursor: pointer;
-            font-size: 1.2em;
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: 15px;
+            right: 15px;
+            font-size: 1.2em;
+            cursor: pointer;
             border-radius: 50%;
             width: 30px;
             height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
     </style>
 </head>
@@ -152,51 +172,45 @@
     <!-- En-tête -->
     <header>
         <h1>Actualités des Jeux Vidéo</h1>
+        <nav class="menu">
+            <a href="#">Accueil</a>
+            <a href="#">Nouveautés</a>
+            <a href="#">Catégories</a>
+            <a href="#">Offres spéciales</a>
+        </nav>
+        <button onclick="openModal()">Connexion/Inscription</button>
     </header>
 
     <!-- Conteneur principal -->
-    <div class="container">
-        <!-- Barre supérieure -->
-        <div class="top-controls">
-            <!-- Barre de recherche -->
-            <div class="control-section search-bar">
-                <h2>Rechercher</h2>
-                <input type="text" id="search" placeholder="Rechercher un jeu ou un article...">
-                <button onclick="search()">Rechercher</button>
+    <div class="main-container">
+        <!-- Barre latérale gauche -->
+        <aside class="sidebar">
+            <h2>Catégories</h2>
+            <ul>
+                <li><a href="#">Action</a></li>
+                <li><a href="#">RPG</a></li>
+                <li><a href="#">Simulation</a></li>
+                <li><a href="#">Stratégie</a></li>
+                <li><a href="#">Sport et course</a></li>
+            </ul>
+        </aside>
+
+        <!-- Section principale -->
+        <div class="content">
+            <div class="news">
+                <h2>S.T.A.L.K.E.R. 2</h2>
+                <img src="https://th.bing.com/th/id/OIP.oxU2_XtiJewXzTLBI886ggHaKe?rs=1&pid=ImgDetMain" alt="S.T.A.L.K.E.R. 2">
+                <p><strong>Date de sortie :</strong> 20 novembre 2024</p>
+                <p>Plongez dans l'univers de Tchernobyl avec ce jeu de tir à la première personne.</p>
             </div>
 
-            <!-- DLC -->
-            <div class="control-section dlc-section">
-                <h2>DLC</h2>
-                <p>Type de DLC :</p>
-                <select id="dlc-type">
-                    <option value="extensions">Extensions</option>
-                </select>
-            </div>
-
-            <!-- Catégories -->
-            <div class="control-section categories-section">
-                <h2>Catégories</h2>
-                <select id="categories">
-                    <option value="" disabled selected>Choisir une catégorie</option>
-                    <option value="action">Action</option>
-                    <option value="rpg">RPG</option>
-                    <option value="simulation">Simulation</option>
-                    <option value="sports">Sport et course</option>
-                </select>
+            <div class="news">
+                <h2>Assassin's Creed Japon</h2>
+                <img src="https://th.bing.com/th/id/OIP.54S9DlS5tjCQrD7wzjvhtQHaE8?rs=1&pid=ImgDetMain" alt="Assassin's Creed Japon">
+                <p><strong>Date de sortie :</strong> 14 février 2025</p>
+                <p>Découvrez le Japon féodal avec deux protagonistes : une shinobi et un samouraï.</p>
             </div>
         </div>
-
-        <!-- Actualités -->
-        <div class="news">
-            <h2>S.T.A.L.K.E.R. 2</h2>
-            <p><strong>Date de sortie :</strong> 20 novembre 2024</p>
-            <img src="https://th.bing.com/th/id/OIP.oxU2_XtiJewXzTLBI886ggHaKe?rs=1&pid=ImgDetMain">
-            <p>S.T.A.L.K.E.R. 2 sur PC est un jeu de tir à la première personne qui est la suite du désormais célèbre S.T.A.L.K.E.R : Shadow of Chernobyl. Ce jeu vous plonge dans l'univers de la zone de Tchernobyl.</p>
-        </div>
-
-        <!-- Bouton pour ouvrir la fenêtre -->
-        <button class="auth-button" onclick="openModal()">Connexion/Inscription</button>
     </div>
 
     <!-- Fenêtre modale -->
@@ -204,43 +218,21 @@
         <div class="modal-content">
             <button class="close-modal" onclick="closeModal()">&times;</button>
             <h2>Connexion</h2>
-            <input type="email" id="email-login" placeholder="Votre adresse e-mail">
-            <button onclick="login()">Se connecter</button>
+            <input type="email" placeholder="Votre adresse e-mail">
+            <button>Se connecter</button>
             <h2>Inscription</h2>
-            <input type="email" id="email-signup" placeholder="Votre adresse e-mail">
-            <button onclick="signup()">S'inscrire</button>
+            <input type="email" placeholder="Votre adresse e-mail">
+            <button>S'inscrire</button>
         </div>
     </div>
 
     <script>
-        // Ouvrir la fenêtre modale
         function openModal() {
             document.getElementById('authModal').style.display = 'block';
         }
 
-        // Fermer la fenêtre modale
         function closeModal() {
             document.getElementById('authModal').style.display = 'none';
-        }
-
-        // Fonction pour la connexion
-        function login() {
-            const email = document.getElementById('email-login').value;
-            if (email) {
-                alert(`Connexion réussie pour : ${email}`);
-            } else {
-                alert("Veuillez entrer une adresse e-mail valide.");
-            }
-        }
-
-        // Fonction pour l'inscription
-        function signup() {
-            const email = document.getElementById('email-signup').value;
-            if (email) {
-                alert(`Inscription réussie pour : ${email}`);
-            } else {
-                alert("Veuillez entrer une adresse e-mail valide.");
-            }
         }
     </script>
 </body>
