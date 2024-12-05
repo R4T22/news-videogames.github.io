@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualités des Jeux Vidéo</title>
+    <title>Actualités et Astuces des Jeux Vidéo</title>
     <style>
         /* Styles globaux */
         body {
@@ -126,6 +126,31 @@
             line-height: 1.6em;
         }
 
+        /* Astuces Section */
+        .tips-section {
+            background-color: #2a475e;
+            padding: 20px;
+            margin-top: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+        .tips-section h2 {
+            color: #66c0f4;
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+        .tips-card {
+            background-color: #1f4d6d;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            color: #c7d5e0;
+        }
+        .tips-card h3 {
+            color: #c7d5e0;
+            font-size: 1.4em;
+        }
+
         /* Fenêtre modale */
         .modal {
             display: none;
@@ -183,7 +208,7 @@
 <body>
     <!-- En-tête -->
     <header>
-        <h1>Actualités des Jeux Vidéo</h1>
+        <h1>Actualités et Astuces des Jeux Vidéo</h1>
         <nav>
             <a href="#">Accueil</a>
             <a href="#">Nouveautés</a>
@@ -199,96 +224,38 @@
         <aside class="sidebar">
             <h2>Catégories</h2>
             <ul>
-                <li><a href="#action">Action</a></li>
+                <li><a href="#releases">Prochaines Sorties</a></li>
                 <li><a href="#rpg">RPG</a></li>
-                <li><a href="#simulation">Simulation</a></li>
-                <li><a href="#sports">Sports</a></li>
-                <li><a href="#strategy">Stratégie</a></li>
+                <li><a href="#action">Action</a></li>
+                <li><a href="#tips">Astuces</a></li>
             </ul>
         </aside>
 
         <!-- Section principale -->
         <div class="content">
+            <!-- Prochaines Sorties -->
+            <h2 class="category-title" id="releases">Prochaines Sorties</h2>
+            <div class="news-card">
+                <h2>Final Fantasy VII Rebirth</h2>
+                <img src="https://example.com/final-fantasy.jpg" alt="Final Fantasy VII Rebirth">
+                <p><strong>Date de sortie :</strong> Février 2024</p>
+                <p>Découvrez la suite tant attendue du remake de Final Fantasy VII, avec un monde ouvert et une histoire captivante.</p>
+            </div>
+
             <!-- Action -->
             <h2 class="category-title" id="action">Action</h2>
             <div class="news-card">
-                <h2>Call of Duty: Modern Warfare III</h2>
-                <img src="https://th.bing.com/th/id/OIP.kUkTjlFgbPQOwMmt8m1pBAHaEK" alt="Call of Duty">
-                <p><strong>Date de sortie :</strong> 10 novembre 2023</p>
-                <p>Replongez dans l'univers militaire avec des missions palpitantes et un multijoueur épique.</p>
-            </div>
-            <div class="news-card">
-                <h2>S.T.A.L.K.E.R. 2</h2>
-                <img src="https://th.bing.com/th/id/OIP.oxU2_XtiJewXzTLBI886ggHaKe?rs=1&pid=ImgDetMain" alt="S.T.A.L.K.E.R. 2">
-                <p><strong>Date de sortie :</strong> 20 novembre 2024</p>
-                <p>Plongez dans l'univers de Tchernobyl avec ce jeu de tir à la première personne.</p>
+                <h2>Marvel's Spider-Man 2</h2>
+                <img src="https://example.com/spiderman2.jpg" alt="Spider-Man 2">
+                <p><strong>Date de sortie :</strong> Octobre 2023</p>
+                <p>Jouez en tant que Peter Parker et Miles Morales dans cette suite palpitante.</p>
             </div>
 
-            <!-- RPG -->
-            <h2 class="category-title" id="rpg">RPG</h2>
-            <div class="news-card">
-                <h2>Baldur's Gate 3</h2>
-                <img src="https://th.bing.com/th/id/OIP.MUJ6xvU3DTOSjsUZjyHz_gHaEK" alt="Baldur's Gate 3">
-                <p><strong>Date de sortie :</strong> 3 août 2023</p>
-                <p>Explorez les Royaumes Oubliés dans ce RPG immersif basé sur Donjons & Dragons.</p>
-            </div>
-            <div class="news-card">
-                <h2>Starfield</h2>
-                <img src="https://th.bing.com/th/id/OIP.j3C_sg0IbXItO1zWfQQk6AHaEK" alt="Starfield">
-                <p><strong>Date de sortie :</strong> 6 septembre 2023</p>
-                <p>Une aventure spatiale épique signée Bethesda, avec des mondes à explorer.</p>
-            </div>
-
-            <!-- Simulation -->
-            <h2 class="category-title" id="simulation">Simulation</h2>
-            <div class="news-card">
-                <h2>Microsoft Flight Simulator</h2>
-                <img src="https://th.bing.com/th/id/OIP.nUshpDb1HZFXGEIsQ-MurQHaEK" alt="Microsoft Flight Simulator">
-                <p><strong>Date de sortie :</strong> 18 août 2020 (mises à jour régulières)</p>
-                <p>Volez à travers le monde avec des graphismes époustouflants et un réalisme inégalé.</p>
-            </div>
-
-            <!-- Stratégie -->
-            <h2 class="category-title" id="strategy">Stratégie</h2>
-            <div class="news-card">
-                <h2>Age of Empires IV</h2>
-                <img src="https://th.bing.com/th/id/OIP.1hfv-k3X3JHQNsbQCo-pPAHaEK" alt="Age of Empires IV">
-                <p><strong>Date de sortie :</strong> 28 octobre 2021</p>
-                <p>Retour du jeu de stratégie classique avec des batailles historiques captivantes.</p>
-            </div>
-
-            <!-- Sports -->
-            <h2 class="category-title" id="sports">Sports</h2>
-            <div class="news-card">
-                <h2>FIFA 24</h2>
-                <img src="https://th.bing.com/th/id/OIP.8MkbpPsYmLb8QMY9_cgbmAHaEK" alt="FIFA 24">
-                <p><strong>Date de sortie :</strong> 29 septembre 2023</p>
-                <p>Le jeu de football ultime avec des graphismes améliorés et de nouvelles fonctionnalités.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Fenêtre modale -->
-    <div id="authModal" class="modal">
-        <div class="modal-content">
-            <button class="close-modal" onclick="closeModal()">&times;</button>
-            <h2>Connexion</h2>
-            <input type="email" placeholder="Votre adresse e-mail">
-            <button>Se connecter</button>
-            <h2>Inscription</h2>
-            <input type="email" placeholder="Votre adresse e-mail">
-            <button>S'inscrire</button>
-        </div>
-    </div>
-
-    <script>
-        function openModal() {
-            document.getElementById('authModal').style.display = 'block';
-        }
-
-        function closeModal() {
-            document.getElementById('authModal').style.display = 'none';
-        }
-    </script>
-</body>
-</html>
+            <!-- Astuces -->
+            <div class="tips-section" id="tips">
+                <h2>Astuces de Jeux</h2>
+                <div class="tips-card">
+                    <h3>Astuces pour Elden Ring</h3>
+                    <p>Explorez la carte minutieusement pour trouver des fragments de carte, des armures rares, et des points d'amélioration d'armes.</p>
+                </div>
+               
