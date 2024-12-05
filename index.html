@@ -47,25 +47,25 @@
             height: auto;
             border-radius: 8px;
         }
-        /* Barre de recherche, DLC et catégories */
+        /* Barre de recherche, DLC, catégories et connexion */
         .top-controls {
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
             margin-bottom: 20px;
         }
-        .search-bar, .dlc-section, .categories-section {
+        .search-bar, .dlc-section, .categories-section, .login-section {
             flex: 1;
             margin-right: 10px;
             min-width: 250px;
         }
-        .search-bar input, .dlc-section select, .categories-section select {
+        .search-bar input, .dlc-section select, .categories-section select, .login-section input {
             width: 100%;
             padding: 10px;
             font-size: 1em;
             margin-bottom: 10px;
         }
-        .search-bar button {
+        .search-bar button, .login-section button {
             padding: 10px 20px;
             font-size: 1em;
             background-color: #333;
@@ -84,7 +84,7 @@
 
     <!-- Conteneur principal -->
     <div class="container">
-        <!-- Barre de recherche, DLC et Catégories -->
+        <!-- Barre de recherche, DLC, Catégories et Connexion -->
         <div class="top-controls">
             <!-- Barre de recherche -->
             <div class="search-bar">
@@ -135,6 +135,13 @@
                     </optgroup>
                 </select>
             </div>
+
+            <!-- Connexion -->
+            <div class="login-section">
+                <h2>Connexion</h2>
+                <input type="email" id="email" placeholder="Entrer votre adresse e-mail">
+                <button onclick="login()">Se connecter</button>
+            </div>
         </div>
 
         <!-- Actualités -->
@@ -168,9 +175,20 @@
     </div>
 
     <script>
+        // Fonction pour la recherche
         function search() {
             const query = document.getElementById('search').value.toLowerCase();
             alert(`Recherche lancée pour : ${query}`);
+        }
+
+        // Fonction pour la connexion
+        function login() {
+            const email = document.getElementById('email').value;
+            if (email) {
+                alert(`Bienvenue, ${email}`);
+            } else {
+                alert("Veuillez entrer une adresse e-mail valide.");
+            }
         }
 
         // Menu Catégories - Fonction exemple
@@ -181,4 +199,3 @@
     </script>
 </body>
 </html>
-
