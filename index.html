@@ -11,18 +11,20 @@
             background-color: #f9f9f9;
             margin: 0;
             padding: 0;
+            display: flex;
         }
         header {
             background-color: #333;
             color: #fff;
             padding: 20px 0;
             text-align: center;
+            width: 100%;
         }
         h1 {
             margin: 0;
         }
         .container {
-            width: 90%;
+            width: 75%;
             max-width: 1200px;
             margin: 20px auto;
             padding: 10px;
@@ -51,7 +53,7 @@
         .top-controls {
             display: flex;
             flex-direction: row;
-            justify-content: space-around;
+            justify-content: space-between;
             flex-wrap: wrap;
             margin-bottom: 20px;
         }
@@ -80,6 +82,35 @@
             border: none;
             cursor: pointer;
         }
+        /* Barre latérale droite */
+        .sidebar {
+            width: 25%;
+            max-width: 300px;
+            background-color: #f4f4f4;
+            border-left: 2px solid #ddd;
+            padding: 20px;
+            box-shadow: -2px 0 6px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar h2 {
+            color: #333;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+        .sidebar input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        .sidebar button {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -90,7 +121,7 @@
 
     <!-- Conteneur principal -->
     <div class="container">
-        <!-- Barre supérieure réorganisée -->
+        <!-- Barre supérieure -->
         <div class="top-controls">
             <!-- Barre de recherche -->
             <div class="control-section search-bar">
@@ -141,20 +172,6 @@
                     </optgroup>
                 </select>
             </div>
-
-            <!-- Connexion -->
-            <div class="control-section login-section">
-                <h2>Connexion</h2>
-                <input type="email" id="email-login" placeholder="Votre adresse e-mail">
-                <button onclick="login()">Se connecter</button>
-            </div>
-
-            <!-- Inscription -->
-            <div class="control-section signup-section">
-                <h2>Inscription</h2>
-                <input type="email" id="email-signup" placeholder="Votre adresse e-mail">
-                <button onclick="signup()">S'inscrire</button>
-            </div>
         </div>
 
         <!-- Actualités -->
@@ -164,27 +181,16 @@
             <img src="https://th.bing.com/th/id/OIP.oxU2_XtiJewXzTLBI886ggHaKe?rs=1&pid=ImgDetMain">
             <p>S.T.A.L.K.E.R. 2 sur PC est un jeu de tir à la première personne qui est la suite du désormais célèbre S.T.A.L.K.E.R : Shadow of Chernobyl. Ce jeu vous plonge dans l'univers de la zone de Tchernobyl, ville d'Ukraine ayant été la victime d'un réacteur en fusion en 1986.</p>
         </div>
+    </div>
 
-        <div class="news">
-            <h2>Assassin’s Creed Japon</h2>
-            <p><strong>Date de sortie :</strong> 14 février 2025</p>
-            <img src="https://th.bing.com/th/id/OIP.54S9DlS5tjCQrD7wzjvhtQHaE8?rs=1&pid=ImgDetMain">
-            <p>Après de nombreuses années d'attente, la licence Assassin's Creed arrive enfin au Japon durant l'ère Sengoku avec ce titre. Deux protagonistes complémentaires : Naoe, une shinobi, et Yasuke, le célèbre samouraï noir.</p>
-        </div>
-
-        <div class="news">
-            <h2>Borderlands 4</h2>
-            <p><strong>Date de sortie :</strong> 2025</p>
-            <img src="https://th.bing.com/th/id/OIP.G2wBUNnBKBF01sEwKlN6QgAAAA?rs=1&pid=ImgDetMain">
-            <p>Borderlands 4 est le quatrième épisode de la saga de jeu de tir développée par Gearbox. Le projet a été officialisé à l'occasion du rachat du studio par 2K.</p>
-        </div>
-
-        <div class="news">
-            <h2>Indiana Jones et le Cercle Ancien</h2>
-            <p><strong>Date de sortie :</strong> 9 décembre 2024</p>
-            <img src="https://i.ytimg.com/vi/P4EIvTOrib8/maxresdefault.jpg">
-            <p>Indiana Jones et le Cercle Ancien est un jeu d'action à la première personne dans l'univers de l'archéologue le plus célèbre du cinéma. Située entre le deuxième et le troisième film, cette aventure vous propose de résoudre des énigmes, explorer des niveaux et surtout utiliser votre fouet afin de découvrir le mystérieux Cercle Ancien.</p>
-        </div>
+    <!-- Barre latérale droite -->
+    <div class="sidebar">
+        <h2>Connexion</h2>
+        <input type="email" id="email-login" placeholder="Votre adresse e-mail">
+        <button onclick="login()">Se connecter</button>
+        <h2>Inscription</h2>
+        <input type="email" id="email-signup" placeholder="Votre adresse e-mail">
+        <button onclick="signup()">S'inscrire</button>
     </div>
 
     <script>
@@ -208,4 +214,13 @@
         function signup() {
             const email = document.getElementById('email-signup').value;
             if (email) {
+                alert(`Inscription réussie pour : ${email}`);
+            } else {
+                alert("Veuillez entrer une adresse e-mail valide.");
+            }
+        }
+    </script>
+</body>
+</html>
+
                
