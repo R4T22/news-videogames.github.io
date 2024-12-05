@@ -3,230 +3,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualités et Astuces des Jeux Vidéo</title>
-    <style>
-        /* Styles généraux */
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #1b2838;
-            color: #c7d5e0;
-        }
-
-        /* En-tête */
-        header {
-            background-color: #171a21;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
-        }
-        header h1 {
-            font-size: 1.8em;
-            color: #66c0f4;
-            margin: 0;
-        }
-        nav {
-            display: flex;
-            gap: 20px;
-        }
-        nav a {
-            color: #c7d5e0;
-            text-decoration: none;
-            font-size: 1em;
-            padding: 5px 10px;
-            transition: background-color 0.3s;
-        }
-        nav a:hover {
-            background-color: #66c0f4;
-            color: #1b2838;
-            border-radius: 5px;
-        }
-        header button {
-            background-color: #66c0f4;
-            border: none;
-            color: #1b2838;
-            font-size: 1em;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        /* Conteneur principal */
-        .main-container {
-            display: flex;
-            margin-top: 10px;
-        }
-
-        /* Barre latérale */
-        .sidebar {
-            width: 260px;
-            background-color: #171a21;
-            padding: 20px;
-            height: 100vh;
-            overflow-y: auto;
-            box-shadow: 2px 0px 6px rgba(0, 0, 0, 0.3);
-        }
-        .sidebar h2 {
-            color: #66c0f4;
-            margin-bottom: 15px;
-        }
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-        }
-        .sidebar ul li {
-            margin-bottom: 10px;
-        }
-        .sidebar ul li a {
-            text-decoration: none;
-            color: #c7d5e0;
-            font-size: 1em;
-            display: block;
-            padding: 8px 12px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .sidebar ul li a:hover {
-            background-color: #66c0f4;
-            color: #1b2838;
-        }
-
-        /* Section principale */
-        .content {
-            flex: 1;
-            padding: 20px;
-        }
-        .category-title {
-            font-size: 1.8em;
-            color: #66c0f4;
-            margin-bottom: 10px;
-        }
-        .news-card {
-            background-color: #2a475e;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
-        }
-        .news-card img {
-            max-width: 100%;
-            border-radius: 8px;
-            margin-bottom: 15px;
-        }
-        .news-card h2 {
-            color: #c7d5e0;
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-        .news-card p {
-            font-size: 1em;
-            color: #c7d5e0;
-            line-height: 1.6em;
-        }
-
-        /* Astuces Section */
-        .tips-section {
-            background-color: #2a475e;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
-            margin-bottom: 20px;
-        }
-        .tips-section h2 {
-            color: #66c0f4;
-            font-size: 1.8em;
-            margin-bottom: 15px;
-        }
-        .tips-card {
-            background-color: #1f4d6d;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-        }
-        .tips-card h3 {
-            color: #c7d5e0;
-            font-size: 1.4em;
-        }
-
-        /* Bouton flottant */
-        .floating-btn {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #66c0f4;
-            color: #1b2838;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 1em;
-            cursor: pointer;
-            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
-            border: none;
-        }
-    </style>
+    <title>Accueil - Actualités et Astuces des Jeux Vidéo</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- En-tête -->
     <header>
         <h1>Actualités et Astuces des Jeux Vidéo</h1>
         <nav>
-            <a href="#">Accueil</a>
-            <a href="#">Nouveautés</a>
-            <a href="#">Catégories</a>
-            <a href="#">Offres spéciales</a>
+            <a href="index.html">Accueil</a>
+            <a href="nouveautes.html">Nouveautés</a>
+            <a href="offres.html">Offres Spéciales</a>
+            <a href="astuces.html">Astuces</a>
         </nav>
-        <button onclick="alert('Connexion / Inscription')">Connexion / Inscription</button>
     </header>
 
-    <!-- Conteneur principal -->
-    <div class="main-container">
-        <!-- Barre latérale -->
-        <aside class="sidebar">
-            <h2>Catégories</h2>
-            <ul>
-                <li><a href="#upcoming">Prochaines Sorties</a></li>
-                <li><a href="#rpg">RPG</a></li>
-                <li><a href="#action">Action</a></li>
-                <li><a href="#tips">Astuces</a></li>
-            </ul>
-        </aside>
-
-        <!-- Contenu principal -->
-        <div class="content">
-            <!-- Prochaines sorties -->
-            <h2 class="category-title" id="upcoming">Prochaines Sorties</h2>
-            <div class="news-card">
-                <h2>Final Fantasy VII Rebirth</h2>
-                <img src="https://via.placeholder.com/600x300" alt="Final Fantasy VII Rebirth">
-                <p><strong>Date de sortie :</strong> Février 2024</p>
-                <p>Découvrez la suite tant attendue du remake de Final Fantasy VII, avec un monde ouvert et une histoire captivante.</p>
+    <!-- Contenu principal -->
+    <main class="content">
+        <h2>Bienvenue sur notre plateforme de jeux vidéo</h2>
+        <p>Découvrez les dernières actualités, astuces, et offres spéciales pour vos jeux préférés.</p>
+        <div class="grid">
+            <div class="card">
+                <h3><a href="nouveautes.html">Nouveautés</a></h3>
+                <p>Consultez les dernières sorties de jeux vidéo.</p>
             </div>
-            <div class="news-card">
-                <h2>Spider-Man 2</h2>
-                <img src="https://via.placeholder.com/600x300" alt="Spider-Man 2">
-                <p><strong>Date de sortie :</strong> Octobre 2023</p>
-                <p>Jouez en tant que Peter Parker et Miles Morales dans cette suite palpitante.</p>
+            <div class="card">
+                <h3><a href="offres.html">Offres Spéciales</a></h3>
+                <p>Profitez des promotions exceptionnelles sur vos titres préférés.</p>
             </div>
-
-            <!-- Section Astuces -->
-            <div class="tips-section" id="tips">
-                <h2>Astuces de Jeux</h2>
-                <div class="tips-card">
-                    <h3>Elden Ring</h3>
-                    <p>Explorez minutieusement les moindres recoins pour trouver des fragments de carte, des trésors cachés, et des points d'amélioration d'armes.</p>
-                </div>
-                <div class="tips-card">
-                    <h3>Hogwarts Legacy</h3>
-                    <p>Concentrez-vous sur les missions secondaires pour gagner des sorts puissants et des récompenses exclusives.</p>
-                </div>
+            <div class="card">
+                <h3><a href="astuces.html">Astuces</a></h3>
+                <p>Apprenez les meilleurs trucs et stratégies pour exceller dans vos jeux.</p>
             </div>
         </div>
-    </div>
+    </main>
 
-    <!-- Bouton flottant -->
-    <button class="floating-btn">Retour en haut</button>
+    <!-- Pied de page -->
+    <footer>
+        <p>© 2024 Actualités des Jeux Vidéo - Tous droits réservés</p>
+    </footer>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nouveautés - Actualités des Jeux Vidéo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Nouveautés des Jeux Vidéo</h1>
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="nouveautes.html">Nouveautés</a>
+            <a href="offres.html">Offres Spéciales</a>
+            <a href="astuces.html">Astuces</a>
+        </nav>
+    </header>
+    <main class="content">
+        <h2>Les dernières sorties</h2>
+        <div class="news-card">
+            <h3>Final Fantasy VII Rebirth</h3>
+            <p><strong>Date de sortie :</strong> Février 2024</p>
+            <p>La suite très attendue du remake de Final Fantasy VII.</p>
+        </div>
+        <div class="news-card">
+            <h3>Spider-Man 2</h3>
+            <p><strong>Date de sortie :</strong> Octobre 2023</p>
+            <p>De nouvelles aventures captivantes de Peter Parker et Miles Morales.</p>
+        </div>
+    </main>
+    <footer>
+        <p>© 2024 Actualités des Jeux Vidéo - Tous droits réservés</p>
+    </footer>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offres Spéciales - Actualités des Jeux Vidéo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Offres Spéciales</h1>
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="nouveautes.html">Nouveautés</a>
+            <a href="offres.html">Offres Spéciales</a>
+            <a href="astuces.html">Astuces</a>
+        </nav>
+    </header>
+    <main class="content">
+        <h2>Profitez des meilleures offres</h2>
+        <div class="news-card">
+            <h3>Borderlands 4</h3>
+            <p>Profitez de -50% sur les précommandes !</p>
+        </div>
+        <div class="news-card">
+            <h3>Assassin’s Creed Mirage</h3>
+            <p>Remise exceptionnelle de 30% pour une durée limitée.</p>
+        </div>
+    </main>
+    <footer>
+        <p>© 2024 Actualités des Jeux Vidéo - Tous droits réservés</p>
+    </footer>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Astuces - Actualités des Jeux Vidéo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Astuces des Jeux Vidéo</h1>
+        <nav>
+            <a href="index.html">Accueil</a>
+            <a href="nouveautes.html">Nouveautés</a>
+            <a href="offres.html">Offres Spéciales</a>
+            <a href="astuces.html">Astuces</a>
+        </nav>
+    </header>
+    <main class="content">
+        <h2>Astuces pour vos jeux préférés</h2>
+        <div class="tips-card">
+            <h3>Elden Ring</h3>
+            <p>Explorez minutieusement les recoins pour découvrir des fragments de carte et des trésors cachés.</p>
+        </div>
+        <div class="tips-card">
+            <h3>Hogwarts Legacy</h3>
+            <p>Complétez les missions secondaires pour débloquer des sorts puissants.</p>
+        </div>
+    </main>
+    <footer>
+        <p>© 2024 Actualités des Jeux Vidéo - Tous droits réservés</p>
+    </footer>
+</body>
+</html>
+
 
