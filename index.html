@@ -10,12 +10,13 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f9f9f9;
+            background-color: #f0f0f0;
+            color: #333;
         }
 
         /* Header */
         header {
-            background-color: #333;
+            background-color: #1a73e8;
             color: white;
             padding: 20px 0;
         }
@@ -28,24 +29,24 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px 20px;
-            background-color: #444;
+            background-color: #1976d2;
         }
         nav a {
             color: white;
             text-decoration: none;
             padding: 10px 20px;
             margin: 0 5px;
-            background-color: #555;
+            background-color: #2196f3;
             border-radius: 4px;
         }
         nav a:hover {
-            background-color: #666;
+            background-color: #42a5f5;
         }
         nav .dropdown {
             position: relative;
         }
         nav .dropdown select {
-            background-color: #555;
+            background-color: #42a5f5;
             color: white;
             padding: 10px;
             border: none;
@@ -68,7 +69,7 @@
         }
         .search-bar button {
             padding: 10px;
-            background-color: #333;
+            background-color: #1a73e8;
             color: white;
             border: none;
             cursor: pointer;
@@ -76,7 +77,7 @@
             border-radius: 4px;
         }
         .search-bar button:hover {
-            background-color: #444;
+            background-color: #42a5f5;
         }
 
         /* Main Content */
@@ -99,12 +100,15 @@
             border-radius: 8px;
             margin-bottom: 10px;
         }
+        .section h3 {
+            color: #1a73e8;
+        }
 
         /* Footer */
         footer {
             text-align: center;
             padding: 20px;
-            background-color: #333;
+            background-color: #1a73e8;
             color: white;
         }
     </style>
@@ -126,6 +130,10 @@
                     <option value="fr">Français</option>
                     <option value="en">English</option>
                     <option value="es">Español</option>
+                    <option value="de">Deutsch</option>
+                    <option value="it">Italiano</option>
+                    <option value="jp">日本語</option>
+                    <option value="cn">中文</option>
                 </select>
             </div>
         </nav>
@@ -140,44 +148,54 @@
     <!-- Main Content -->
     <div class="container" id="content">
         <h2>Bienvenue sur Actualités Jeux Vidéo</h2>
-        <p>Découvrez toutes les dernières nouveautés, offres spéciales, et astuces pour les jeux vidéo les plus populaires !</p>
+        <p>Explorez toutes les nouveautés, offres spéciales, astuces et bien plus encore sur vos jeux préférés !</p>
         <div class="section">
             <h3>Dernières Nouveautés</h3>
             <div>
                 <img src="https://via.placeholder.com/800x400" alt="Nouvelle sortie">
-                <p><strong>Cyberpunk 2077: Phantom Liberty</strong></p>
-                <p>Découvrez l'extension tant attendue avec des missions passionnantes et des nouveaux personnages.</p>
+                <p><strong>The Legend of Zelda: Tears of the Kingdom</strong></p>
+                <p>Découvrez le monde ouvert épique dans cette nouvelle aventure légendaire.</p>
             </div>
             <div>
                 <img src="https://via.placeholder.com/800x400" alt="Nouvelle sortie">
-                <p><strong>The Last of Us Part III</strong></p>
-                <p>Préparez-vous pour une nouvelle aventure captivante avec Ellie et de nouveaux personnages.</p>
+                <p><strong>Spider-Man 2</strong></p>
+                <p>Les aventures de Peter Parker et Miles Morales continuent dans ce jeu d’action époustouflant.</p>
+            </div>
+            <div>
+                <img src="https://via.placeholder.com/800x400" alt="Nouvelle sortie">
+                <p><strong>Hogwarts Legacy</strong></p>
+                <p>Plongez dans le monde magique de Harry Potter avec cette incroyable expérience RPG.</p>
             </div>
         </div>
         <div class="section">
             <h3>Offres Spéciales</h3>
             <div>
                 <img src="https://via.placeholder.com/800x400" alt="Offre spéciale">
-                <p><strong>Promotion Steam : RPG Épique</strong></p>
-                <p>Profitez de -50% sur les grands RPG comme The Witcher 3 et Skyrim.</p>
+                <p><strong>Promo Ubisoft</strong></p>
+                <p>Économisez jusqu’à 75% sur des titres comme Assassin’s Creed et Far Cry.</p>
             </div>
             <div>
                 <img src="https://via.placeholder.com/800x400" alt="Offre spéciale">
-                <p><strong>Pack Assassin's Creed</strong></p>
-                <p>Collection complète Assassin's Creed à -70% pour une durée limitée !</p>
+                <p><strong>Bundle PlayStation Plus</strong></p>
+                <p>3 mois d'abonnement à prix réduit. Offrez-vous des jeux gratuits et des remises exclusives.</p>
             </div>
         </div>
         <div class="section">
             <h3>Astuces Jeux Vidéo</h3>
             <div>
                 <img src="https://via.placeholder.com/800x400" alt="Astuce">
-                <p><strong>Astuces pour Elden Ring</strong></p>
-                <p>Découvrez comment optimiser votre personnage et vaincre les boss les plus coriaces.</p>
+                <p><strong>Astuces pour Call of Duty: Warzone</strong></p>
+                <p>Stratégies pour survivre jusqu'à la fin et améliorer votre ratio K/D.</p>
             </div>
             <div>
                 <img src="https://via.placeholder.com/800x400" alt="Astuce">
-                <p><strong>Astuces pour Fortnite</strong></p>
-                <p>Apprenez les meilleures stratégies pour gagner vos parties et améliorer votre construction.</p>
+                <p><strong>Astuces pour Stardew Valley</strong></p>
+                <p>Optimisez votre ferme et découvrez des secrets cachés dans la vallée.</p>
+            </div>
+            <div>
+                <img src="https://via.placeholder.com/800x400" alt="Astuce">
+                <p><strong>Astuces pour Minecraft</strong></p>
+                <p>Découvrez des astuces de construction et apprenez à éviter les pièges.</p>
             </div>
         </div>
     </div>
@@ -196,25 +214,25 @@
             "new-releases": `
                 <h2>Nouveautés</h2>
                 <div class="section">
-                    <h3>Cyberpunk 2077: Phantom Liberty</h3>
-                    <img src="https://via.placeholder.com/800x400" alt="Cyberpunk">
-                    <p>Découvrez une extension palpitante avec des missions passionnantes et des nouveaux personnages.</p>
+                    <h3>The Legend of Zelda: Tears of the Kingdom</h3>
+                    <img src="https://via.placeholder.com/800x400" alt="Zelda">
+                    <p>Une aventure légendaire dans un monde épique.</p>
                 </div>
             `,
             "special-offers": `
                 <h2>Offres Spéciales</h2>
                 <div class="section">
-                    <h3>Promo Steam - RPG Épique</h3>
-                    <img src="https://via.placeholder.com/800x400" alt="Promo RPG">
-                    <p>-50% sur les RPG populaires comme The Witcher 3 et Skyrim !</p>
+                    <h3>Promo Ubisoft</h3>
+                    <img src="https://via.placeholder.com/800x400" alt="Promo Ubisoft">
+                    <p>Économisez jusqu’à 75% sur des grands titres.</p>
                 </div>
             `,
             "game-tips": `
                 <h2>Astuces Jeux Vidéo</h2>
                 <div class="section">
-                    <h3>Stratégies pour Fortnite</h3>
-                    <img src="https://via.placeholder.com/800x400" alt="Astuce Fortnite">
-                    <p>Apprenez à gagner plus de parties avec des astuces avancées.</p>
+                    <h3>Astuces pour Stardew Valley</h3>
+                    <img src="https://via.placeholder.com/800x400" alt="Astuce Stardew Valley">
+                    <p>Optimisez votre ferme et découvrez des secrets cachés dans la vallée.</p>
                 </div>
             `
         };
@@ -237,5 +255,3 @@
     </script>
 </body>
 </html>
-
-
