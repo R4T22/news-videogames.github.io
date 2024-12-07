@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actualités Jeux Vidéo</title>
     <style>
+        /* Global Styles */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -24,20 +25,58 @@
         }
         nav {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
             background-color: #444;
-            padding: 10px;
         }
         nav a {
             color: white;
             text-decoration: none;
             padding: 10px 20px;
-            margin: 0 10px;
+            margin: 0 5px;
             background-color: #555;
             border-radius: 4px;
         }
         nav a:hover {
             background-color: #666;
+        }
+        nav .dropdown {
+            position: relative;
+        }
+        nav .dropdown select {
+            background-color: #555;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+
+        /* Search Bar */
+        .search-bar {
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
+        }
+        .search-bar input {
+            width: 60%;
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .search-bar button {
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-left: 10px;
+            border-radius: 4px;
+        }
+        .search-bar button:hover {
+            background-color: #444;
         }
 
         /* Main Content */
@@ -58,27 +97,7 @@
         .section img {
             max-width: 100%;
             border-radius: 8px;
-        }
-
-        /* Right Panel */
-        .right-panel {
-            position: fixed;
-            right: 0;
-            top: 0;
-            width: 350px;
-            background-color: #333;
-            color: white;
-            height: 100%;
-            display: none;
-            padding: 20px;
-            box-shadow: -3px 0 6px rgba(0, 0, 0, 0.2);
-        }
-        .right-panel.active {
-            display: block;
-        }
-        .close-panel {
-            text-align: right;
-            cursor: pointer;
+            margin-bottom: 10px;
         }
 
         /* Footer */
@@ -88,33 +107,6 @@
             background-color: #333;
             color: white;
         }
-
-        /* Dropdown */
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #444;
-            color: white;
-            min-width: 200px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-            z-index: 1;
-        }
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-        .dropdown-content a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            padding: 10px;
-        }
-        .dropdown-content a:hover {
-            background-color: #555;
-        }
     </style>
 </head>
 <body>
@@ -122,39 +114,72 @@
     <header>
         <h1>Actualités Jeux Vidéo</h1>
         <nav>
-            <a href="#" onclick="navigate('home')">Accueil</a>
-            <a href="#" onclick="navigate('new-releases')">Nouveautés</a>
-            <a href="#" onclick="navigate('special-offers')">Offres Spéciales</a>
-            <div class="dropdown">
-                <a href="#">Astuces</a>
-                <div class="dropdown-content">
-                    <a href="#" onclick="navigate('tips-action')">Jeux d'Action</a>
-                    <a href="#" onclick="navigate('tips-rpg')">RPG</a>
-                    <a href="#" onclick="navigate('tips-strategy')">Stratégie</a>
-                </div>
+            <div>
+                <a href="#" onclick="navigate('home')">Accueil</a>
+                <a href="#" onclick="navigate('new-releases')">Nouveautés</a>
+                <a href="#" onclick="navigate('special-offers')">Offres Spéciales</a>
+                <a href="#" onclick="navigate('game-tips')">Astuces</a>
             </div>
-            <a href="#" onclick="toggleRightPanel()">Connexion/Inscription</a>
+            <div class="dropdown">
+                <label for="language">Langue :</label>
+                <select id="language" onchange="changeLanguage(this.value)">
+                    <option value="fr">Français</option>
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                </select>
+            </div>
         </nav>
     </header>
 
-    <!-- Main content -->
-    <div class="container" id="content">
-        <!-- Default content -->
-        <h2>Bienvenue sur le site des actualités jeux vidéo</h2>
-        <p>Découvrez les dernières nouvelles, astuces et offres spéciales sur vos jeux préférés.</p>
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Rechercher un jeu ou une actualité...">
+        <button onclick="performSearch()">Rechercher</button>
     </div>
 
-    <!-- Right panel for login/signup -->
-    <div class="right-panel" id="rightPanel">
-        <div class="close-panel" onclick="toggleRightPanel()">✖</div>
-        <h2>Connexion / Inscription</h2>
-        <form>
-            <label for="email">Adresse e-mail :</label>
-            <input type="email" id="email" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
-            <label for="password">Mot de passe :</label>
-            <input type="password" id="password" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
-            <button type="submit" style="width: 100%; padding: 10px; background-color: #555; color: white; border: none;">Se connecter</button>
-        </form>
+    <!-- Main Content -->
+    <div class="container" id="content">
+        <h2>Bienvenue sur Actualités Jeux Vidéo</h2>
+        <p>Découvrez toutes les dernières nouveautés, offres spéciales, et astuces pour les jeux vidéo les plus populaires !</p>
+        <div class="section">
+            <h3>Dernières Nouveautés</h3>
+            <div>
+                <img src="https://via.placeholder.com/800x400" alt="Nouvelle sortie">
+                <p><strong>Cyberpunk 2077: Phantom Liberty</strong></p>
+                <p>Découvrez l'extension tant attendue avec des missions passionnantes et des nouveaux personnages.</p>
+            </div>
+            <div>
+                <img src="https://via.placeholder.com/800x400" alt="Nouvelle sortie">
+                <p><strong>The Last of Us Part III</strong></p>
+                <p>Préparez-vous pour une nouvelle aventure captivante avec Ellie et de nouveaux personnages.</p>
+            </div>
+        </div>
+        <div class="section">
+            <h3>Offres Spéciales</h3>
+            <div>
+                <img src="https://via.placeholder.com/800x400" alt="Offre spéciale">
+                <p><strong>Promotion Steam : RPG Épique</strong></p>
+                <p>Profitez de -50% sur les grands RPG comme The Witcher 3 et Skyrim.</p>
+            </div>
+            <div>
+                <img src="https://via.placeholder.com/800x400" alt="Offre spéciale">
+                <p><strong>Pack Assassin's Creed</strong></p>
+                <p>Collection complète Assassin's Creed à -70% pour une durée limitée !</p>
+            </div>
+        </div>
+        <div class="section">
+            <h3>Astuces Jeux Vidéo</h3>
+            <div>
+                <img src="https://via.placeholder.com/800x400" alt="Astuce">
+                <p><strong>Astuces pour Elden Ring</strong></p>
+                <p>Découvrez comment optimiser votre personnage et vaincre les boss les plus coriaces.</p>
+            </div>
+            <div>
+                <img src="https://via.placeholder.com/800x400" alt="Astuce">
+                <p><strong>Astuces pour Fortnite</strong></p>
+                <p>Apprenez les meilleures stratégies pour gagner vos parties et améliorer votre construction.</p>
+            </div>
+        </div>
     </div>
 
     <!-- Footer -->
@@ -164,45 +189,32 @@
 
     <script>
         const pages = {
-            "home": `
-                <h2>Accueil</h2>
-                <p>Explorez les actualités, offres spéciales et astuces pour vos jeux favoris !</p>
+            home: `
+                <h2>Bienvenue sur Actualités Jeux Vidéo</h2>
+                <p>Explorez les dernières actualités, offres spéciales et astuces pour vos jeux préférés !</p>
             `,
             "new-releases": `
                 <h2>Nouveautés</h2>
                 <div class="section">
                     <h3>Cyberpunk 2077: Phantom Liberty</h3>
-                    <p>Date de sortie : Disponible maintenant</p>
                     <img src="https://via.placeholder.com/800x400" alt="Cyberpunk">
-                    <p>Explorez une extension palpitante avec des quêtes inédites et de nouveaux personnages.</p>
+                    <p>Découvrez une extension palpitante avec des missions passionnantes et des nouveaux personnages.</p>
                 </div>
             `,
             "special-offers": `
                 <h2>Offres Spéciales</h2>
                 <div class="section">
                     <h3>Promo Steam - RPG Épique</h3>
-                    <p>-50% sur des RPG de renom !</p>
+                    <img src="https://via.placeholder.com/800x400" alt="Promo RPG">
+                    <p>-50% sur les RPG populaires comme The Witcher 3 et Skyrim !</p>
                 </div>
             `,
-            "tips-action": `
-                <h2>Astuces Jeux d'Action</h2>
+            "game-tips": `
+                <h2>Astuces Jeux Vidéo</h2>
                 <div class="section">
-                    <h3>Astuces pour Call of Duty</h3>
-                    <p>Comment améliorer votre précision et vos stratégies en multijoueur.</p>
-                </div>
-            `,
-            "tips-rpg": `
-                <h2>Astuces RPG</h2>
-                <div class="section">
-                    <h3>Astuces pour Final Fantasy XVI</h3>
-                    <p>Optimisez votre équipement et découvrez les secrets des boss.</p>
-                </div>
-            `,
-            "tips-strategy": `
-                <h2>Astuces Stratégie</h2>
-                <div class="section">
-                    <h3>Astuces pour Civilization VI</h3>
-                    <p>Conseils pour dominer vos adversaires et établir un empire durable.</p>
+                    <h3>Stratégies pour Fortnite</h3>
+                    <img src="https://via.placeholder.com/800x400" alt="Astuce Fortnite">
+                    <p>Apprenez à gagner plus de parties avec des astuces avancées.</p>
                 </div>
             `
         };
@@ -212,14 +224,18 @@
             content.innerHTML = pages[page] || "<h2>Page non trouvée</h2>";
         }
 
-        function toggleRightPanel() {
-            const panel = document.getElementById("rightPanel");
-            panel.classList.toggle("active");
+        function performSearch() {
+            const query = document.getElementById('searchInput').value;
+            alert(`Recherche en cours pour : ${query}`);
         }
 
-        // Load default page
-        navigate('home');
+        function changeLanguage(lang) {
+            alert(`Langue changée en : ${lang}`);
+        }
+
+        navigate("home");
     </script>
 </body>
 </html>
+
 
