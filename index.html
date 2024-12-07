@@ -3,229 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualités et Astuces des Jeux Vidéo</title>
+    <title>Actualités Jeux Vidéo</title>
     <style>
-        /* Styles généraux */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1b2838;
-            color: #c7d5e0;
+            background-color: #f9f9f9;
         }
-
-        /* En-tête */
         header {
-            background-color: #171a21;
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+        header nav {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            background-color: #444;
+            padding: 10px;
         }
-        header h1 {
-            font-size: 1.8em;
-            color: #66c0f4;
-            margin: 0;
-        }
-        nav {
-            display: flex;
-            gap: 20px;
-        }
-        nav a {
-            color: #c7d5e0;
+        header nav a {
+            color: white;
             text-decoration: none;
-            font-size: 1em;
-            padding: 5px 10px;
-            transition: background-color 0.3s;
+            padding: 10px 20px;
+            margin: 0 10px;
+            background-color: #555;
+            border-radius: 4px;
         }
-        nav a:hover {
-            background-color: #66c0f4;
-            color: #1b2838;
-            border-radius: 5px;
+        header nav a:hover {
+            background-color: #666;
         }
-        header button {
-            background-color: #66c0f4;
-            border: none;
-            color: #1b2838;
-            font-size: 1em;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        /* Conteneur principal */
-        .main-container {
-            display: flex;
-            margin-top: 10px;
-        }
-
-        /* Barre latérale */
-        .sidebar {
-            width: 260px;
-            background-color: #171a21;
-            padding: 20px;
-            height: 100vh;
-            overflow-y: auto;
-            box-shadow: 2px 0px 6px rgba(0, 0, 0, 0.3);
-        }
-        .sidebar h2 {
-            color: #66c0f4;
-            margin-bottom: 15px;
-        }
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-        }
-        .sidebar ul li {
-            margin-bottom: 10px;
-        }
-        .sidebar ul li a {
-            text-decoration: none;
-            color: #c7d5e0;
-            font-size: 1em;
-            display: block;
-            padding: 8px 12px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .sidebar ul li a:hover {
-            background-color: #66c0f4;
-            color: #1b2838;
-        }
-
-        /* Section principale */
-        .content {
-            flex: 1;
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
             padding: 20px;
         }
-        .category-title {
-            font-size: 1.8em;
-            color: #66c0f4;
-            margin-bottom: 10px;
+        h1, h2 {
+            color: #333;
         }
-        .news-card {
-            background-color: #2a475e;
-            padding: 20px;
+        .news, .tips, .special-offers {
             margin-bottom: 20px;
+            padding: 20px;
+            background-color: white;
             border-radius: 8px;
-            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        .news-card img {
+        .news img, .tips img, .special-offers img {
             max-width: 100%;
             border-radius: 8px;
-            margin-bottom: 15px;
         }
-        .news-card h2 {
-            color: #c7d5e0;
-            font-size: 1.5em;
-            margin-bottom: 10px;
-        }
-        .news-card p {
-            font-size: 1em;
-            color: #c7d5e0;
-            line-height: 1.6em;
-        }
-
-        /* Astuces Section */
-        .tips-section {
-            background-color: #2a475e;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
-            margin-bottom: 20px;
-        }
-        .tips-section h2 {
-            color: #66c0f4;
-            font-size: 1.8em;
-            margin-bottom: 15px;
-        }
-        .tips-card {
-            background-color: #1f4d6d;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-        }
-        .tips-card h3 {
-            color: #c7d5e0;
-            font-size: 1.4em;
-        }
-
-        /* Bouton flottant */
-        .floating-btn {
+        .right-panel {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #66c0f4;
-            color: #1b2838;
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-size: 1em;
+            right: 0;
+            top: 0;
+            width: 300px;
+            background-color: #333;
+            color: white;
+            height: 100%;
+            display: none;
+            padding: 20px;
+            box-shadow: -3px 0 6px rgba(0, 0, 0, 0.2);
+        }
+        .right-panel.active {
+            display: block;
+        }
+        .close-panel {
+            text-align: right;
             cursor: pointer;
-            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.3);
-            border: none;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
         }
     </style>
 </head>
 <body>
-    <!-- En-tête -->
+    <!-- Header -->
     <header>
-        <h1>Actualités et Astuces des Jeux Vidéo</h1>
+        <h1>Actualités Jeux Vidéo</h1>
         <nav>
-            <a href="#">Accueil</a>
-            <a href="#">Nouveautés</a>
-            <a href="#">Catégories</a>
-            <a href="#">Offres spéciales</a>
+            <a href="#" onclick="navigate('home')">Accueil</a>
+            <a href="#" onclick="navigate('new-releases')">Nouveautés</a>
+            <a href="#" onclick="navigate('special-offers')">Offres Spéciales</a>
+            <a href="#" onclick="navigate('game-tips')">Astuces</a>
+            <a href="#" onclick="toggleRightPanel()">Connexion/Inscription</a>
         </nav>
-        <button onclick="alert('Connexion / Inscription')">Connexion / Inscription</button>
     </header>
 
-    <!-- Conteneur principal -->
-    <div class="main-container">
-        <!-- Barre latérale -->
-        <aside class="sidebar">
-            <h2>Catégories</h2>
-            <ul>
-                <li><a href="#upcoming">Prochaines Sorties</a></li>
-                <li><a href="#rpg">RPG</a></li>
-                <li><a href="#action">Action</a></li>
-                <li><a href="#tips">Astuces</a></li>
-            </ul>
-        </aside>
-
-        <!-- Contenu principal -->
-        <div class="content">
-            <!-- Prochaines sorties -->
-            <h2 class="category-title" id="upcoming">Prochaines Sorties</h2>
-            <div class="news-card">
-                <h2>Final Fantasy VII Rebirth</h2>
-                <img src="https://via.placeholder.com/600x300" alt="Final Fantasy VII Rebirth">
-                <p><strong>Date de sortie :</strong> Février 2024</p>
-                <p>Découvrez la suite tant attendue du remake de Final Fantasy VII, avec un monde ouvert et une histoire captivante.</p>
-            </div>
-            <div class="news-card">
-                <h2>Spider-Man 2</h2>
-                <img src="https://via.placeholder.com/600x300" alt="Spider-Man 2">
-                <p><strong>Date de sortie :</strong> Octobre 2023</p>
-                <p>Jouez en tant que Peter Parker et Miles Morales dans cette suite palpitante.</p>
-            </div>
-
-            <!-- Section Astuces -->
-            <div class="tips-section" id="tips">
-                <h2>Astuces de Jeux</h2>
-                <div class="tips-card">
-                    <h3>Elden Ring</h3>
-                    <p>Explorez minutieusement les moindres recoins pour trouver des fragments de carte, des trésors cachés, et des points d'amélioration d'armes.</p>
-                </div>
-                <div class="tips-card">
-                    <h3>Hogwarts Legacy</h3>
-                    <p>Concentrez-vous sur les missions secondaires pour gagner des sorts puissants et des récompenses exclusives.</p>
-                </div>
-            </div>
-        </div>
+    <!-- Main content -->
+    <div class="container" id="content">
+        <!-- Default content -->
+        <h2>Bienvenue sur le site des actualités jeux vidéo</h2>
+        <p>Explorez les dernières nouvelles, offres spéciales, et astuces pour vos jeux favoris !</p>
     </div>
 
-    <!-- Bouton flottant -->
-    <button class="floating-btn">Retour en haut</button>
+    <!-- Right panel for login/signup -->
+    <div class="right-panel" id="rightPanel">
+        <div class="close-panel" onclick="toggleRightPanel()">✖</div>
+        <h2>Connexion / Inscription</h2>
+        <form>
+            <label for="email">Adresse e-mail :</label>
+            <input type="email" id="email" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
+            <label for="password">Mot de passe :</label>
+            <input type="password" id="password" required style="width: 100%; padding: 10px; margin-bottom: 10px;">
+            <button type="submit" style="width: 100%; padding: 10px; background-color: #555; color: white; border: none;">Se connecter</button>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 Actualités Jeux Vidéo. Tous droits réservés.
+    </footer>
+
+    <script>
+        const pages = {
+            "home": `
+                <h2>Bienvenue sur le site des actualités jeux vidéo</h2>
+                <p>Explorez les dernières nouvelles, offres spéciales, et astuces pour vos jeux favoris !</p>
+            `,
+            "new-releases": `
+                <h2>Nouveautés</h2>
+                <div class="news">
+                    <h3>S.T.A.L.K.E.R. 2</h3>
+                    <p>Date de sortie : 20 novembre 2024</p>
+                    <img src="https://via.placeholder.com/800x400" alt="S.T.A.L.K.E.R. 2">
+                    <p>Découvrez la suite de la saga immersive dans la zone de Tchernobyl.</p>
+                </div>
+                <div class="news">
+                    <h3>Assassin's Creed Japon</h3>
+                    <p>Date de sortie : 14 février 2025</p>
+                    <img src="https://via.placeholder.com/800x400" alt="Assassin's Creed Japon">
+                    <p>Explorez le Japon de l'ère Sengoku avec des héros légendaires.</p>
+                </div>
+            `,
+            "special-offers": `
+                <h2>Offres Spéciales</h2>
+                <div class="special-offers">
+                    <h3>Pack RPG Ultime</h3>
+                    <p>-50% sur les meilleurs RPG de l'année !</p>
+                </div>
+                <div class="special-offers">
+                    <h3>Bundle Action</h3>
+                    <p>-30% sur une sélection de jeux d'action palpitants.</p>
+                </div>
+            `,
+            "game-tips": `
+                <h2>Astuces de Jeux</h2>
+                <div class="tips">
+                    <h3>Astuces pour Elden Ring</h3>
+                    <p>Apprenez à battre les boss les plus difficiles.</p>
+                </div>
+                <div class="tips">
+                    <h3>Stratégies pour Minecraft</h3>
+                    <p>Découvrez les secrets de la construction avancée.</p>
+                </div>
+            `
+        };
+
+        function navigate(page) {
+            const content = document.getElementById("content");
+            content.innerHTML = pages[page] || "<h2>Page non trouvée</h2>";
+        }
+
+        function toggleRightPanel() {
+            const panel = document.getElementById("rightPanel");
+            panel.classList.toggle("active");
+        }
+
+        // Load default page
+        navigate('home');
+    </script>
 </body>
 </html>
