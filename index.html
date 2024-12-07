@@ -7,124 +7,160 @@
     <style>
         /* Global Styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #f0f0f0;
-            color: #333;
+            background-color: #121212;
+            color: #e0e0e0;
         }
 
         /* Header */
         header {
-            background-color: #1a73e8;
+            background-color: #1b2838;
             color: white;
-            padding: 20px 0;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
         }
-        header h1 {
-            text-align: center;
-            margin: 0;
-        }
-        nav {
+        header .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 20px;
-            background-color: #1976d2;
+            padding: 0 20px;
         }
-        nav a {
+        header .navbar a {
             color: white;
             text-decoration: none;
-            padding: 10px 20px;
-            margin: 0 5px;
-            background-color: #2196f3;
+            margin: 0 10px;
+            padding: 10px 15px;
+            font-size: 1em;
+            background-color: #2a475e;
             border-radius: 4px;
         }
-        nav a:hover {
-            background-color: #42a5f5;
+        header .navbar a:hover {
+            background-color: #4c6f91;
         }
-        nav .dropdown {
-            position: relative;
+        header .navbar .language-select {
+            margin-left: auto;
         }
-        nav .dropdown select {
-            background-color: #42a5f5;
+        header .navbar select {
+            background-color: #2a475e;
             color: white;
-            padding: 10px;
+            padding: 5px 10px;
             border: none;
             border-radius: 4px;
             font-size: 1em;
         }
 
-        /* Search Bar */
-        .search-bar {
-            margin: 20px auto;
-            display: flex;
-            justify-content: center;
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('https://via.placeholder.com/1920x600') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
         }
-        .search-bar input {
-            width: 60%;
-            padding: 10px;
-            font-size: 1em;
-            border: 1px solid #ccc;
-            border-radius: 4px;
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
         }
-        .search-bar button {
-            padding: 10px;
-            background-color: #1a73e8;
+        .hero p {
+            font-size: 1.5em;
+            margin-bottom: 40px;
+        }
+        .hero button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background-color: #4c6f91;
             color: white;
             border: none;
+            border-radius: 5px;
             cursor: pointer;
-            margin-left: 10px;
-            border-radius: 4px;
         }
-        .search-bar button:hover {
-            background-color: #42a5f5;
+        .hero button:hover {
+            background-color: #6c8fa7;
         }
 
-        /* Main Content */
+        /* Content Sections */
         .container {
             max-width: 1200px;
             margin: 20px auto;
             padding: 20px;
         }
 
-        /* Section Styles */
         .section {
-            margin-bottom: 20px;
-            padding: 20px;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
         }
-        .section img {
-            max-width: 100%;
-            border-radius: 8px;
-            margin-bottom: 10px;
+        .section h2 {
+            border-bottom: 2px solid #4c6f91;
+            padding-bottom: 10px;
+            color: #4caf50;
         }
-        .section h3 {
-            color: #1a73e8;
+
+        /* Cards for Games */
+        .card-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .card {
+            background-color: #1b2838;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+            width: 300px;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .card h3 {
+            padding: 10px 15px;
+            color: #e0e0e0;
+        }
+        .card p {
+            padding: 0 15px 15px;
+            color: #b0b0b0;
+        }
+        .card button {
+            margin: 10px 15px;
+            padding: 10px;
+            width: calc(100% - 30px);
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .card button:hover {
+            background-color: #66bb6a;
         }
 
         /* Footer */
         footer {
+            background-color: #1b2838;
+            color: #b0b0b0;
             text-align: center;
             padding: 20px;
-            background-color: #1a73e8;
-            color: white;
         }
     </style>
 </head>
 <body>
+
     <!-- Header -->
     <header>
-        <h1>Actualités Jeux Vidéo</h1>
-        <nav>
-            <div>
-                <a href="#" onclick="navigate('home')">Accueil</a>
-                <a href="#" onclick="navigate('new-releases')">Nouveautés</a>
-                <a href="#" onclick="navigate('special-offers')">Offres Spéciales</a>
-                <a href="#" onclick="navigate('game-tips')">Astuces</a>
-            </div>
-            <div class="dropdown">
+        <div class="navbar">
+            <a href="#" onclick="navigate('home')">Accueil</a>
+            <a href="#" onclick="navigate('new-releases')">Nouveautés</a>
+            <a href="#" onclick="navigate('special-offers')">Offres Spéciales</a>
+            <a href="#" onclick="navigate('game-tips')">Astuces</a>
+            <div class="language-select">
                 <label for="language">Langue :</label>
                 <select id="language" onchange="changeLanguage(this.value)">
                     <option value="fr">Français</option>
@@ -136,66 +172,57 @@
                     <option value="cn">中文</option>
                 </select>
             </div>
-        </nav>
+        </div>
     </header>
 
-    <!-- Search Bar -->
-    <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="Rechercher un jeu ou une actualité...">
-        <button onclick="performSearch()">Rechercher</button>
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Bienvenue sur Actualités Jeux Vidéo</h1>
+        <p>Explorez les dernières nouveautés, offres spéciales, et astuces des jeux populaires.</p>
+        <button onclick="navigate('new-releases')">Voir les Nouveautés</button>
     </div>
 
     <!-- Main Content -->
     <div class="container" id="content">
-        <h2>Bienvenue sur Actualités Jeux Vidéo</h2>
-        <p>Explorez toutes les nouveautés, offres spéciales, astuces et bien plus encore sur vos jeux préférés !</p>
         <div class="section">
-            <h3>Dernières Nouveautés</h3>
-            <div>
-                <img src="https://via.placeholder.com/800x400" alt="Nouvelle sortie">
-                <p><strong>The Legend of Zelda: Tears of the Kingdom</strong></p>
-                <p>Découvrez le monde ouvert épique dans cette nouvelle aventure légendaire.</p>
-            </div>
-            <div>
-                <img src="https://via.placeholder.com/800x400" alt="Nouvelle sortie">
-                <p><strong>Spider-Man 2</strong></p>
-                <p>Les aventures de Peter Parker et Miles Morales continuent dans ce jeu d’action époustouflant.</p>
-            </div>
-            <div>
-                <img src="https://via.placeholder.com/800x400" alt="Nouvelle sortie">
-                <p><strong>Hogwarts Legacy</strong></p>
-                <p>Plongez dans le monde magique de Harry Potter avec cette incroyable expérience RPG.</p>
+            <h2>Nouveautés</h2>
+            <div class="card-container">
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x180" alt="Game Image">
+                    <h3>The Legend of Zelda: Tears of the Kingdom</h3>
+                    <p>Plongez dans un monde magique et vivez une aventure légendaire.</p>
+                    <button>En savoir plus</button>
+                </div>
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x180" alt="Game Image">
+                    <h3>Hogwarts Legacy</h3>
+                    <p>Vivez l'expérience ultime dans l'univers de Harry Potter.</p>
+                    <button>En savoir plus</button>
+                </div>
             </div>
         </div>
+
         <div class="section">
-            <h3>Offres Spéciales</h3>
-            <div>
-                <img src="https://via.placeholder.com/800x400" alt="Offre spéciale">
-                <p><strong>Promo Ubisoft</strong></p>
-                <p>Économisez jusqu’à 75% sur des titres comme Assassin’s Creed et Far Cry.</p>
-            </div>
-            <div>
-                <img src="https://via.placeholder.com/800x400" alt="Offre spéciale">
-                <p><strong>Bundle PlayStation Plus</strong></p>
-                <p>3 mois d'abonnement à prix réduit. Offrez-vous des jeux gratuits et des remises exclusives.</p>
+            <h2>Offres Spéciales</h2>
+            <div class="card-container">
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x180" alt="Game Image">
+                    <h3>Promo Ubisoft</h3>
+                    <p>Économisez jusqu'à 75% sur des titres phares comme Assassin's Creed.</p>
+                    <button>Voir l'offre</button>
+                </div>
             </div>
         </div>
+
         <div class="section">
-            <h3>Astuces Jeux Vidéo</h3>
-            <div>
-                <img src="https://via.placeholder.com/800x400" alt="Astuce">
-                <p><strong>Astuces pour Call of Duty: Warzone</strong></p>
-                <p>Stratégies pour survivre jusqu'à la fin et améliorer votre ratio K/D.</p>
-            </div>
-            <div>
-                <img src="https://via.placeholder.com/800x400" alt="Astuce">
-                <p><strong>Astuces pour Stardew Valley</strong></p>
-                <p>Optimisez votre ferme et découvrez des secrets cachés dans la vallée.</p>
-            </div>
-            <div>
-                <img src="https://via.placeholder.com/800x400" alt="Astuce">
-                <p><strong>Astuces pour Minecraft</strong></p>
-                <p>Découvrez des astuces de construction et apprenez à éviter les pièges.</p>
+            <h2>Astuces</h2>
+            <div class="card-container">
+                <div class="card">
+                    <img src="https://via.placeholder.com/300x180" alt="Game Image">
+                    <h3>Call of Duty: Warzone</h3>
+                    <p>Conseils pour dominer le champ de bataille et améliorer votre stratégie.</p>
+                    <button>Voir l'astuce</button>
+                </div>
             </div>
         </div>
     </div>
@@ -206,52 +233,14 @@
     </footer>
 
     <script>
-        const pages = {
-            home: `
-                <h2>Bienvenue sur Actualités Jeux Vidéo</h2>
-                <p>Explorez les dernières actualités, offres spéciales et astuces pour vos jeux préférés !</p>
-            `,
-            "new-releases": `
-                <h2>Nouveautés</h2>
-                <div class="section">
-                    <h3>The Legend of Zelda: Tears of the Kingdom</h3>
-                    <img src="https://via.placeholder.com/800x400" alt="Zelda">
-                    <p>Une aventure légendaire dans un monde épique.</p>
-                </div>
-            `,
-            "special-offers": `
-                <h2>Offres Spéciales</h2>
-                <div class="section">
-                    <h3>Promo Ubisoft</h3>
-                    <img src="https://via.placeholder.com/800x400" alt="Promo Ubisoft">
-                    <p>Économisez jusqu’à 75% sur des grands titres.</p>
-                </div>
-            `,
-            "game-tips": `
-                <h2>Astuces Jeux Vidéo</h2>
-                <div class="section">
-                    <h3>Astuces pour Stardew Valley</h3>
-                    <img src="https://via.placeholder.com/800x400" alt="Astuce Stardew Valley">
-                    <p>Optimisez votre ferme et découvrez des secrets cachés dans la vallée.</p>
-                </div>
-            `
-        };
-
         function navigate(page) {
-            const content = document.getElementById("content");
-            content.innerHTML = pages[page] || "<h2>Page non trouvée</h2>";
-        }
-
-        function performSearch() {
-            const query = document.getElementById('searchInput').value;
-            alert(`Recherche en cours pour : ${query}`);
+            alert(`Naviguer vers ${page}`);
         }
 
         function changeLanguage(lang) {
             alert(`Langue changée en : ${lang}`);
         }
-
-        navigate("home");
     </script>
 </body>
 </html>
+
