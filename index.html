@@ -24,62 +24,123 @@
             z-index: 1000;
             box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
         }
+
         header .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0 20px;
         }
+
+        header .navbar .menu {
+            display: flex;
+            gap: 15px;
+        }
+
         header .navbar a {
             color: white;
             text-decoration: none;
-            margin: 0 10px;
             padding: 10px 15px;
             font-size: 1em;
             background-color: #2a475e;
             border-radius: 4px;
         }
+
         header .navbar a:hover {
             background-color: #4c6f91;
         }
-        header .navbar .language-select {
-            margin-left: auto;
-        }
-        header .navbar select {
-            background-color: #2a475e;
-            color: white;
-            padding: 5px 10px;
-            border: none;
-            border-radius: 4px;
-            font-size: 1em;
+
+        header .navbar .search-bar {
+            flex: 1;
+            display: flex;
+            justify-content: center;
         }
 
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url('https://via.placeholder.com/1920x600') center/cover no-repeat;
-            color: white;
-            text-align: center;
-            padding: 100px 20px;
+        header .navbar .search-bar input {
+            width: 70%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
         }
-        .hero h1 {
-            font-size: 3em;
+
+        header .navbar .search-bar button {
+            padding: 10px 15px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        header .navbar .search-bar button:hover {
+            background-color: #66bb6a;
+        }
+
+        header .navbar .auth-buttons button {
+            background-color: #2a475e;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        header .navbar .auth-buttons button:hover {
+            background-color: #4c6f91;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1001;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: #1b2838;
+            padding: 20px;
+            border-radius: 8px;
+            width: 400px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content h2 {
+            color: #4caf50;
             margin-bottom: 20px;
         }
-        .hero p {
-            font-size: 1.5em;
-            margin-bottom: 40px;
+
+        .modal-content input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: none;
         }
-        .hero button {
-            padding: 15px 30px;
-            font-size: 1.2em;
-            background-color: #4c6f91;
+
+        .modal-content button {
+            padding: 10px;
+            width: 100%;
+            background-color: #4caf50;
             color: white;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
-        .hero button:hover {
-            background-color: #6c8fa7;
+
+        .modal-content button:hover {
+            background-color: #66bb6a;
         }
 
         /* Content Sections */
@@ -92,18 +153,19 @@
         .section {
             margin-bottom: 40px;
         }
+
         .section h2 {
             border-bottom: 2px solid #4c6f91;
             padding-bottom: 10px;
             color: #4caf50;
         }
 
-        /* Cards for Games */
         .card-container {
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
         }
+
         .card {
             background-color: #1b2838;
             border-radius: 8px;
@@ -112,22 +174,27 @@
             width: 300px;
             transition: transform 0.3s;
         }
+
         .card:hover {
             transform: translateY(-10px);
         }
+
         .card img {
             width: 100%;
             height: 180px;
             object-fit: cover;
         }
+
         .card h3 {
             padding: 10px 15px;
             color: #e0e0e0;
         }
+
         .card p {
             padding: 0 15px 15px;
             color: #b0b0b0;
         }
+
         .card button {
             margin: 10px 15px;
             padding: 10px;
@@ -138,6 +205,7 @@
             border-radius: 5px;
             cursor: pointer;
         }
+
         .card button:hover {
             background-color: #66bb6a;
         }
@@ -156,75 +224,27 @@
     <!-- Header -->
     <header>
         <div class="navbar">
-            <a href="#" onclick="navigate('home')">Accueil</a>
-            <a href="#" onclick="navigate('new-releases')">Nouveautés</a>
-            <a href="#" onclick="navigate('special-offers')">Offres Spéciales</a>
-            <a href="#" onclick="navigate('game-tips')">Astuces</a>
-            <div class="language-select">
-                <label for="language">Langue :</label>
-                <select id="language" onchange="changeLanguage(this.value)">
-                    <option value="fr">Français</option>
-                    <option value="en">English</option>
-                    <option value="es">Español</option>
-                    <option value="de">Deutsch</option>
-                    <option value="it">Italiano</option>
-                    <option value="jp">日本語</option>
-                    <option value="cn">中文</option>
-                </select>
+            <div class="menu">
+                <a href="#" onclick="navigate('home')">Accueil</a>
+                <a href="#" onclick="navigate('new-releases')">Nouveautés</a>
+                <a href="#" onclick="navigate('special-offers')">Offres Spéciales</a>
+                <a href="#" onclick="navigate('game-tips')">Astuces</a>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Rechercher un jeu...">
+                <button>Rechercher</button>
+            </div>
+            <div class="auth-buttons">
+                <button onclick="openModal('login')">Connexion</button>
+                <button onclick="openModal('signup')">Inscription</button>
             </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <div class="hero">
-        <h1>Bienvenue sur Actualités Jeux Vidéo</h1>
-        <p>Explorez les dernières nouveautés, offres spéciales, et astuces des jeux populaires.</p>
-        <button onclick="navigate('new-releases')">Voir les Nouveautés</button>
-    </div>
-
-    <!-- Main Content -->
-    <div class="container" id="content">
-        <div class="section">
-            <h2>Nouveautés</h2>
-            <div class="card-container">
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x180" alt="Game Image">
-                    <h3>The Legend of Zelda: Tears of the Kingdom</h3>
-                    <p>Plongez dans un monde magique et vivez une aventure légendaire.</p>
-                    <button>En savoir plus</button>
-                </div>
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x180" alt="Game Image">
-                    <h3>Hogwarts Legacy</h3>
-                    <p>Vivez l'expérience ultime dans l'univers de Harry Potter.</p>
-                    <button>En savoir plus</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Offres Spéciales</h2>
-            <div class="card-container">
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x180" alt="Game Image">
-                    <h3>Promo Ubisoft</h3>
-                    <p>Économisez jusqu'à 75% sur des titres phares comme Assassin's Creed.</p>
-                    <button>Voir l'offre</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Astuces</h2>
-            <div class="card-container">
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x180" alt="Game Image">
-                    <h3>Call of Duty: Warzone</h3>
-                    <p>Conseils pour dominer le champ de bataille et améliorer votre stratégie.</p>
-                    <button>Voir l'astuce</button>
-                </div>
-            </div>
-        </div>
+    <!-- Content -->
+    <div class="container">
+        <!-- Sections (e.g., Nouveautés, Offres, Astuces) -->
+        <!-- Examples here -->
     </div>
 
     <!-- Footer -->
@@ -232,13 +252,34 @@
         &copy; 2024 Actualités Jeux Vidéo. Tous droits réservés.
     </footer>
 
+    <!-- Modals -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <h2>Connexion</h2>
+            <input type="email" placeholder="Adresse email">
+            <input type="password" placeholder="Mot de passe">
+            <button>Se connecter</button>
+        </div>
+    </div>
+
+    <div id="signup-modal" class="modal">
+        <div class="modal-content">
+            <h2>Inscription</h2>
+            <input type="text" placeholder="Nom d'utilisateur">
+            <input type="email" placeholder="Adresse email">
+            <input type="password" placeholder="Mot de passe">
+            <button>S'inscrire</button>
+        </div>
+    </div>
+
     <script>
-        function navigate(page) {
-            alert(`Naviguer vers ${page}`);
+        function openModal(type) {
+            const modal = document.getElementById(`${type}-modal`);
+            modal.classList.add('active');
         }
 
-        function changeLanguage(lang) {
-            alert(`Langue changée en : ${lang}`);
+        function navigate(page) {
+            alert(`Naviguer vers : ${page}`);
         }
     </script>
 </body>
