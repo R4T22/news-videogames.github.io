@@ -11,19 +11,24 @@
             padding: 0;
             background-color: #f9f9f9;
         }
+
+        /* Header */
         header {
             background-color: #333;
             color: white;
-            padding: 10px 0;
-            text-align: center;
+            padding: 20px 0;
         }
-        header nav {
+        header h1 {
+            text-align: center;
+            margin: 0;
+        }
+        nav {
             display: flex;
             justify-content: center;
             background-color: #444;
             padding: 10px;
         }
-        header nav a {
+        nav a {
             color: white;
             text-decoration: none;
             padding: 10px 20px;
@@ -31,33 +36,36 @@
             background-color: #555;
             border-radius: 4px;
         }
-        header nav a:hover {
+        nav a:hover {
             background-color: #666;
         }
+
+        /* Main Content */
         .container {
             max-width: 1200px;
             margin: 20px auto;
             padding: 20px;
         }
-        h1, h2 {
-            color: #333;
-        }
-        .news, .tips, .special-offers {
+
+        /* Section Styles */
+        .section {
             margin-bottom: 20px;
             padding: 20px;
             background-color: white;
             border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
-        .news img, .tips img, .special-offers img {
+        .section img {
             max-width: 100%;
             border-radius: 8px;
         }
+
+        /* Right Panel */
         .right-panel {
             position: fixed;
             right: 0;
             top: 0;
-            width: 300px;
+            width: 350px;
             background-color: #333;
             color: white;
             height: 100%;
@@ -72,11 +80,40 @@
             text-align: right;
             cursor: pointer;
         }
+
+        /* Footer */
         footer {
             text-align: center;
             padding: 20px;
             background-color: #333;
             color: white;
+        }
+
+        /* Dropdown */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #444;
+            color: white;
+            min-width: 200px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .dropdown-content a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+        }
+        .dropdown-content a:hover {
+            background-color: #555;
         }
     </style>
 </head>
@@ -88,7 +125,14 @@
             <a href="#" onclick="navigate('home')">Accueil</a>
             <a href="#" onclick="navigate('new-releases')">Nouveautés</a>
             <a href="#" onclick="navigate('special-offers')">Offres Spéciales</a>
-            <a href="#" onclick="navigate('game-tips')">Astuces</a>
+            <div class="dropdown">
+                <a href="#">Astuces</a>
+                <div class="dropdown-content">
+                    <a href="#" onclick="navigate('tips-action')">Jeux d'Action</a>
+                    <a href="#" onclick="navigate('tips-rpg')">RPG</a>
+                    <a href="#" onclick="navigate('tips-strategy')">Stratégie</a>
+                </div>
+            </div>
             <a href="#" onclick="toggleRightPanel()">Connexion/Inscription</a>
         </nav>
     </header>
@@ -97,7 +141,7 @@
     <div class="container" id="content">
         <!-- Default content -->
         <h2>Bienvenue sur le site des actualités jeux vidéo</h2>
-        <p>Explorez les dernières nouvelles, offres spéciales, et astuces pour vos jeux favoris !</p>
+        <p>Découvrez les dernières nouvelles, astuces et offres spéciales sur vos jeux préférés.</p>
     </div>
 
     <!-- Right panel for login/signup -->
@@ -121,44 +165,44 @@
     <script>
         const pages = {
             "home": `
-                <h2>Bienvenue sur le site des actualités jeux vidéo</h2>
-                <p>Explorez les dernières nouvelles, offres spéciales, et astuces pour vos jeux favoris !</p>
+                <h2>Accueil</h2>
+                <p>Explorez les actualités, offres spéciales et astuces pour vos jeux favoris !</p>
             `,
             "new-releases": `
                 <h2>Nouveautés</h2>
-                <div class="news">
-                    <h3>S.T.A.L.K.E.R. 2</h3>
-                    <p>Date de sortie : 20 novembre 2024</p>
-                    <img src="https://via.placeholder.com/800x400" alt="S.T.A.L.K.E.R. 2">
-                    <p>Découvrez la suite de la saga immersive dans la zone de Tchernobyl.</p>
-                </div>
-                <div class="news">
-                    <h3>Assassin's Creed Japon</h3>
-                    <p>Date de sortie : 14 février 2025</p>
-                    <img src="https://via.placeholder.com/800x400" alt="Assassin's Creed Japon">
-                    <p>Explorez le Japon de l'ère Sengoku avec des héros légendaires.</p>
+                <div class="section">
+                    <h3>Cyberpunk 2077: Phantom Liberty</h3>
+                    <p>Date de sortie : Disponible maintenant</p>
+                    <img src="https://via.placeholder.com/800x400" alt="Cyberpunk">
+                    <p>Explorez une extension palpitante avec des quêtes inédites et de nouveaux personnages.</p>
                 </div>
             `,
             "special-offers": `
                 <h2>Offres Spéciales</h2>
-                <div class="special-offers">
-                    <h3>Pack RPG Ultime</h3>
-                    <p>-50% sur les meilleurs RPG de l'année !</p>
-                </div>
-                <div class="special-offers">
-                    <h3>Bundle Action</h3>
-                    <p>-30% sur une sélection de jeux d'action palpitants.</p>
+                <div class="section">
+                    <h3>Promo Steam - RPG Épique</h3>
+                    <p>-50% sur des RPG de renom !</p>
                 </div>
             `,
-            "game-tips": `
-                <h2>Astuces de Jeux</h2>
-                <div class="tips">
-                    <h3>Astuces pour Elden Ring</h3>
-                    <p>Apprenez à battre les boss les plus difficiles.</p>
+            "tips-action": `
+                <h2>Astuces Jeux d'Action</h2>
+                <div class="section">
+                    <h3>Astuces pour Call of Duty</h3>
+                    <p>Comment améliorer votre précision et vos stratégies en multijoueur.</p>
                 </div>
-                <div class="tips">
-                    <h3>Stratégies pour Minecraft</h3>
-                    <p>Découvrez les secrets de la construction avancée.</p>
+            `,
+            "tips-rpg": `
+                <h2>Astuces RPG</h2>
+                <div class="section">
+                    <h3>Astuces pour Final Fantasy XVI</h3>
+                    <p>Optimisez votre équipement et découvrez les secrets des boss.</p>
+                </div>
+            `,
+            "tips-strategy": `
+                <h2>Astuces Stratégie</h2>
+                <div class="section">
+                    <h3>Astuces pour Civilization VI</h3>
+                    <p>Conseils pour dominer vos adversaires et établir un empire durable.</p>
                 </div>
             `
         };
@@ -178,3 +222,4 @@
     </script>
 </body>
 </html>
+
