@@ -1,224 +1,233 @@
+/site-jeux-videos
+├── index.html
+├── nouveautes.html
+├── offres.html
+├── astuces.html
+├── connexion.html
+├── css/
+│   └── style.css
+├── js/
+│   └── script.js
+└── images/
+    └── *Images des jeux, icônes, etc.*
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* Header */
+header {
+    background-color: #1d3557;
+    color: #fff;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+}
+
+header .logo a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline-block;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+header nav ul li a:hover {
+    background-color: #457b9d;
+}
+
+/* Search Bar */
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.search-container input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px 0 0 5px;
+}
+
+.search-container button {
+    padding: 10px 15px;
+    background-color: #457b9d;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.search-container button:hover {
+    background-color: #1d3557;
+}
+
+/* Language Selector */
+.language-selector {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.language-selector select {
+    padding: 8px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Main Content */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.card-content h2 {
+    margin: 0 0 10px;
+    font-size: 1.5rem;
+}
+
+.card-content p {
+    color: #555;
+}
+
+/* Footer */
+footer {
+    background-color: #1d3557;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    margin-top: 50px;
+}
+
+footer a {
+    color: #457b9d;
+    text-decoration: none;
+}
+function searchGames() {
+    const query = document.getElementById('searchInput').value.toLowerCase();
+    alert(`Recherche lancée pour : ${query}`);
+}
+
+function changeLanguage() {
+    const selectedLang = document.getElementById('languageSelect').value;
+    alert(`Langue changée en : ${selectedLang}`);
+}
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualités des Jeux Vidéo</title>
-    <style>
-        /* Styles de base */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f9f9f9;
-            margin: 0;
-            padding: 0;
-            display: flex;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-            width: 100%;
-        }
-        h1 {
-            margin: 0;
-        }
-        .container {
-            width: 75%;
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 10px;
-        }
-        .news {
-            background-color: #fff;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-        }
-        h2 {
-            color: #333;
-            font-size: 1.5em;
-        }
-        p {
-            color: #666;
-            font-size: 1.1em;
-        }
-        .news img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-        /* Organisation de la barre supérieure */
-        .top-controls {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-        .control-section {
-            flex: 1;
-            min-width: 250px;
-            margin: 0 10px;
-            text-align: center;
-        }
-        .control-section h2 {
-            margin-bottom: 10px;
-            font-size: 1.2em;
-            color: #333;
-        }
-        .control-section input,
-        .control-section select,
-        .control-section button {
-            width: 90%;
-            padding: 10px;
-            font-size: 1em;
-            margin-bottom: 10px;
-        }
-        .control-section button {
-            background-color: #333;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
-        /* Barre latérale droite */
-        .sidebar {
-            width: 25%;
-            max-width: 300px;
-            background-color: #f4f4f4;
-            border-left: 2px solid #ddd;
-            padding: 20px;
-            box-shadow: -2px 0 6px rgba(0, 0, 0, 0.1);
-        }
-        .sidebar h2 {
-            color: #333;
-            font-size: 1.2em;
-            margin-bottom: 15px;
-        }
-        .sidebar input {
-            width: 100%;
-            padding: 10px;
-            font-size: 1em;
-            margin-bottom: 10px;
-        }
-        .sidebar button {
-            width: 100%;
-            padding: 10px;
-            font-size: 1em;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            cursor: pointer;
-        }
-    </style>
+    <title>Accueil - Actualités Jeux Vidéo</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/script.js"></script>
 </head>
 <body>
-    <!-- En-tête -->
+    <!-- Header -->
     <header>
-        <h1>Actualités des Jeux Vidéo</h1>
+        <div class="navbar">
+            <div class="logo">
+                <a href="index.html">Jeux Vidéo Actu</a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="nouveautes.html">Nouveautés</a></li>
+                    <li><a href="offres.html">Offres Spéciales</a></li>
+                    <li><a href="astuces.html">Astuces</a></li>
+                    <li><a href="connexion.html">Connexion</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="language-selector">
+            <select id="languageSelect" onchange="changeLanguage()">
+                <option value="fr">Français</option>
+                <option value="en">English</option>
+                <option value="es">Español</option>
+                <option value="de">Deutsch</option>
+                <option value="it">Italiano</option>
+                <!-- Ajoutez plus de langues ici -->
+            </select>
+        </div>
     </header>
 
-    <!-- Conteneur principal -->
+    <!-- Search Bar -->
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Rechercher un jeu ou une actualité...">
+        <button onclick="searchGames()">Rechercher</button>
+    </div>
+
+    <!-- Main Content -->
     <div class="container">
-        <!-- Barre supérieure -->
-        <div class="top-controls">
-            <!-- Barre de recherche -->
-            <div class="control-section search-bar">
-                <h2>Rechercher</h2>
-                <input type="text" id="search" placeholder="Rechercher un jeu ou un article...">
-                <button onclick="search()">Rechercher</button>
-            </div>
-
-            <!-- DLC -->
-            <div class="control-section dlc-section">
-                <h2>DLC</h2>
-                <p>Type de DLC :</p>
-                <select id="dlc-type">
-                    <option value="extensions">Extensions</option>
-                </select>
-            </div>
-
-            <!-- Catégories -->
-            <div class="control-section categories-section">
-                <h2>Catégories</h2>
-                <select id="categories">
-                    <option value="" disabled selected>Choisir une catégorie</option>
-                    <optgroup label="Sections spéciales">
-                        <option value="free-to-play">Free-to-play</option>
-                        <option value="demos">Démos</option>
-                        <option value="early-access">Accès anticipé</option>
-                        <option value="steam-deck">Steam Deck</option>
-                        <option value="controller-compatible">Compatibilité avec un contrôleur</option>
-                        <option value="remote-play">Remote Play</option>
-                        <option value="vr">VR</option>
-                    </optgroup>
-                    <optgroup label="Genres">
-                        <option value="action">Action</option>
-                        <option value="arcade">Arcade et rythme</option>
-                        <option value="combat">Combat et arts martiaux</option>
-                        <option value="fps">Tir à la 1ʳᵉ personne</option>
-                        <option value="rpg">RPG</option>
-                        <option value="simulation">Simulation</option>
-                        <option value="strategy">Stratégie</option>
-                        <option value="sports">Sport et course</option>
-                    </optgroup>
-                    <optgroup label="Thèmes">
-                        <option value="anime">Anime</option>
-                        <option value="horror">Horreur</option>
-                        <option value="open-world">Monde ouvert</option>
-                        <option value="sci-fi">Science-fiction</option>
-                        <option value="survival">Survie</option>
-                    </optgroup>
-                </select>
+        <h2>Dernières Actualités</h2>
+        <div class="card">
+            <img src="images/stalker2.jpg" alt="S.T.A.L.K.E.R. 2">
+            <div class="card-content">
+                <h2>S.T.A.L.K.E.R. 2</h2>
+                <p>Date de sortie : 20 novembre 2024</p>
+                <p>Plongez dans l'univers post-apocalyptique de Tchernobyl.</p>
             </div>
         </div>
-
-        <!-- Actualités -->
-        <div class="news">
-            <h2>S.T.A.L.K.E.R. 2</h2>
-            <p><strong>Date de sortie :</strong> 20 novembre 2024</p>
-            <img src="https://th.bing.com/th/id/OIP.oxU2_XtiJewXzTLBI886ggHaKe?rs=1&pid=ImgDetMain">
-            <p>S.T.A.L.K.E.R. 2 sur PC est un jeu de tir à la première personne qui est la suite du désormais célèbre S.T.A.L.K.E.R : Shadow of Chernobyl. Ce jeu vous plonge dans l'univers de la zone de Tchernobyl, ville d'Ukraine ayant été la victime d'un réacteur en fusion en 1986.</p>
-        </div>
+        <!-- Ajoutez d'autres cartes ici -->
     </div>
 
-    <!-- Barre latérale droite -->
-    <div class="sidebar">
-        <h2>Connexion</h2>
-        <input type="email" id="email-login" placeholder="Votre adresse e-mail">
-        <button onclick="login()">Se connecter</button>
-        <h2>Inscription</h2>
-        <input type="email" id="email-signup" placeholder="Votre adresse e-mail">
-        <button onclick="signup()">S'inscrire</button>
-    </div>
-
-    <script>
-        // Fonction pour la recherche
-        function search() {
-            const query = document.getElementById('search').value.toLowerCase();
-            alert(`Recherche lancée pour : ${query}`);
-        }
-
-        // Fonction pour la connexion
-        function login() {
-            const email = document.getElementById('email-login').value;
-            if (email) {
-                alert(`Connexion réussie pour : ${email}`);
-            } else {
-                alert("Veuillez entrer une adresse e-mail valide.");
-            }
-        }
-
-        // Fonction pour l'inscription
-        function signup() {
-            const email = document.getElementById('email-signup').value;
-            if (email) {
-                alert(`Inscription réussie pour : ${email}`);
-            } else {
-                alert("Veuillez entrer une adresse e-mail valide.");
-            }
-        }
-    </script>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Jeux Vidéo Actu - Tous droits réservés</p>
+    </footer>
 </body>
 </html>
