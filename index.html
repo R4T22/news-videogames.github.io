@@ -3,314 +3,221 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualités Jeux Vidéo</title>
+    <title>Actualités des Jeux Vidéo</title>
     <style>
-        /* Global Styles */
+        /* Styles de base */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
             margin: 0;
             padding: 0;
-            background-color: #1a1a1a;
-            color: #e0e0e0;
+            display: flex;
         }
-
-        /* Header */
         header {
-            background-color: #1f2f46;
-            color: white;
-            padding: 10px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+            background-color: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            width: 100%;
         }
-
-        header .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
+        h1 {
+            margin: 0;
         }
-
-        header .navbar .menu {
-            display: flex;
-            gap: 15px;
-        }
-
-        header .navbar a {
-            color: white;
-            text-decoration: none;
-            padding: 10px 15px;
-            font-size: 1em;
-            background-color: #2a475e;
-            border-radius: 4px;
-        }
-
-        header .navbar a:hover {
-            background-color: #4c6f91;
-        }
-
-        header .navbar .search-bar {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
-
-        header .navbar .search-bar input {
-            width: 60%;
-            padding: 10px;
-            border-radius: 5px;
-            border: none;
-        }
-
-        header .navbar .search-bar button {
-            padding: 10px 15px;
-            background-color: #4caf50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            margin-left: 10px;
-            cursor: pointer;
-        }
-
-        header .navbar .search-bar button:hover {
-            background-color: #66bb6a;
-        }
-
-        header .navbar .lang-select select {
-            padding: 10px;
-            border-radius: 5px;
-            border: none;
-            background-color: #2a475e;
-            color: white;
-        }
-
-        header .navbar .auth-buttons button {
-            background-color: #2a475e;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        header .navbar .auth-buttons button:hover {
-            background-color: #4c6f91;
-        }
-
-        /* Content Sections */
         .container {
+            width: 75%;
             max-width: 1200px;
             margin: 20px auto;
-            padding: 20px;
-        }
-
-        .section {
-            margin-bottom: 40px;
-        }
-
-        .section h2 {
-            border-bottom: 2px solid #4c6f91;
-            padding-bottom: 10px;
-            color: #4caf50;
-        }
-
-        .card-container {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .card {
-            background-color: #2a2a2a;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
-            width: 300px;
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-        }
-
-        .card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
-        .card h3 {
-            padding: 10px 15px;
-            color: #e0e0e0;
-        }
-
-        .card p {
-            padding: 0 15px 15px;
-            color: #b0b0b0;
-        }
-
-        .card button {
-            margin: 10px 15px;
             padding: 10px;
-            width: calc(100% - 30px);
-            background-color: #4caf50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
         }
-
-        .card button:hover {
-            background-color: #66bb6a;
-        }
-
-        /* Footer */
-        footer {
-            background-color: #1f2f46;
-            color: #b0b0b0;
-            text-align: center;
+        .news {
+            background-color: #fff;
             padding: 20px;
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1001;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background-color: #1b2838;
-            padding: 20px;
+            margin-bottom: 20px;
             border-radius: 8px;
-            width: 400px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
         }
-
-        .modal-content h2 {
-            color: #4caf50;
+        h2 {
+            color: #333;
+            font-size: 1.5em;
+        }
+        p {
+            color: #666;
+            font-size: 1.1em;
+        }
+        .news img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        /* Organisation de la barre supérieure */
+        .top-controls {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            flex-wrap: wrap;
             margin-bottom: 20px;
         }
-
-        .modal-content input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            border: none;
+        .control-section {
+            flex: 1;
+            min-width: 250px;
+            margin: 0 10px;
+            text-align: center;
         }
-
-        .modal-content button {
+        .control-section h2 {
+            margin-bottom: 10px;
+            font-size: 1.2em;
+            color: #333;
+        }
+        .control-section input,
+        .control-section select,
+        .control-section button {
+            width: 90%;
             padding: 10px;
-            width: 100%;
-            background-color: #4caf50;
-            color: white;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        .control-section button {
+            background-color: #333;
+            color: #fff;
             border: none;
-            border-radius: 5px;
             cursor: pointer;
         }
-
-        .modal-content button:hover {
-            background-color: #66bb6a;
+        /* Barre latérale droite */
+        .sidebar {
+            width: 25%;
+            max-width: 300px;
+            background-color: #f4f4f4;
+            border-left: 2px solid #ddd;
+            padding: 20px;
+            box-shadow: -2px 0 6px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar h2 {
+            color: #333;
+            font-size: 1.2em;
+            margin-bottom: 15px;
+        }
+        .sidebar input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            margin-bottom: 10px;
+        }
+        .sidebar button {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-
-    <!-- Header -->
+    <!-- En-tête -->
     <header>
-        <div class="navbar">
-            <div class="menu">
-                <a href="#">Accueil</a>
-                <a href="#">Nouveautés</a>
-                <a href="#">Offres Spéciales</a>
-                <a href="#">Astuces</a>
-            </div>
-            <div class="search-bar">
-                <input type="text" placeholder="Rechercher un jeu...">
-                <button>Rechercher</button>
-            </div>
-            <div class="lang-select">
-                <select>
-                    <option value="fr">Français</option>
-                    <option value="en">English</option>
-                    <option value="es">Español</option>
-                    <option value="de">Deutsch</option>
-                    <!-- Add 46 more languages -->
-                </select>
-            </div>
-            <div class="auth-buttons">
-                <button onclick="openModal('login')">Connexion</button>
-                <button onclick="openModal('signup')">Inscription</button>
-            </div>
-        </div>
+        <h1>Actualités des Jeux Vidéo</h1>
     </header>
 
-    <!-- Content -->
+    <!-- Conteneur principal -->
     <div class="container">
-        <div class="section">
-            <h2>Nouveautés</h2>
-            <div class="card-container">
-                <!-- Add cards for new games -->
+        <!-- Barre supérieure -->
+        <div class="top-controls">
+            <!-- Barre de recherche -->
+            <div class="control-section search-bar">
+                <h2>Rechercher</h2>
+                <input type="text" id="search" placeholder="Rechercher un jeu ou un article...">
+                <button onclick="search()">Rechercher</button>
+            </div>
+
+            <!-- DLC -->
+            <div class="control-section dlc-section">
+                <h2>DLC</h2>
+                <p>Type de DLC :</p>
+                <select id="dlc-type">
+                    <option value="extensions">Extensions</option>
+                </select>
+            </div>
+
+            <!-- Catégories -->
+            <div class="control-section categories-section">
+                <h2>Catégories</h2>
+                <select id="categories">
+                    <option value="" disabled selected>Choisir une catégorie</option>
+                    <optgroup label="Sections spéciales">
+                        <option value="free-to-play">Free-to-play</option>
+                        <option value="demos">Démos</option>
+                        <option value="early-access">Accès anticipé</option>
+                        <option value="steam-deck">Steam Deck</option>
+                        <option value="controller-compatible">Compatibilité avec un contrôleur</option>
+                        <option value="remote-play">Remote Play</option>
+                        <option value="vr">VR</option>
+                    </optgroup>
+                    <optgroup label="Genres">
+                        <option value="action">Action</option>
+                        <option value="arcade">Arcade et rythme</option>
+                        <option value="combat">Combat et arts martiaux</option>
+                        <option value="fps">Tir à la 1ʳᵉ personne</option>
+                        <option value="rpg">RPG</option>
+                        <option value="simulation">Simulation</option>
+                        <option value="strategy">Stratégie</option>
+                        <option value="sports">Sport et course</option>
+                    </optgroup>
+                    <optgroup label="Thèmes">
+                        <option value="anime">Anime</option>
+                        <option value="horror">Horreur</option>
+                        <option value="open-world">Monde ouvert</option>
+                        <option value="sci-fi">Science-fiction</option>
+                        <option value="survival">Survie</option>
+                    </optgroup>
+                </select>
             </div>
         </div>
 
-        <div class="section">
-            <h2>Offres Spéciales</h2>
-            <div class="card-container">
-                <!-- Add cards for special offers -->
-            </div>
-        </div>
-
-        <div class="section">
-            <h2>Astuces</h2>
-            <div class="card-container">
-                <!-- Add cards for game tips -->
-            </div>
+        <!-- Actualités -->
+        <div class="news">
+            <h2>S.T.A.L.K.E.R. 2</h2>
+            <p><strong>Date de sortie :</strong> 20 novembre 2024</p>
+            <img src="https://th.bing.com/th/id/OIP.oxU2_XtiJewXzTLBI886ggHaKe?rs=1&pid=ImgDetMain">
+            <p>S.T.A.L.K.E.R. 2 sur PC est un jeu de tir à la première personne qui est la suite du désormais célèbre S.T.A.L.K.E.R : Shadow of Chernobyl. Ce jeu vous plonge dans l'univers de la zone de Tchernobyl, ville d'Ukraine ayant été la victime d'un réacteur en fusion en 1986.</p>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer>
-        &copy; 2024 Actualités Jeux Vidéo. Tous droits réservés.
-    </footer>
-
-    <!-- Modals -->
-    <div id="login-modal" class="modal">
-        <div class="modal-content">
-            <h2>Connexion</h2>
-            <input type="email" placeholder="Adresse email">
-            <input type="password" placeholder="Mot de passe">
-            <button>Se connecter</button>
-        </div>
-    </div>
-
-    <div id="signup-modal" class="modal">
-        <div class="modal-content">
-            <h2>Inscription</h2>
-            <input type="text" placeholder="Nom d'utilisateur">
-            <input type="email" placeholder="Adresse email">
-            <input type="password" placeholder="Mot de passe">
-            <button>S'inscrire</button>
-        </div>
+    <!-- Barre latérale droite -->
+    <div class="sidebar">
+        <h2>Connexion</h2>
+        <input type="email" id="email-login" placeholder="Votre adresse e-mail">
+        <button onclick="login()">Se connecter</button>
+        <h2>Inscription</h2>
+        <input type="email" id="email-signup" placeholder="Votre adresse e-mail">
+        <button onclick="signup()">S'inscrire</button>
     </div>
 
     <script>
-        function openModal(type) {
-            const modal = document.getElementById(`${type}-modal`);
-            modal.classList.add('active');
+        // Fonction pour la recherche
+        function search() {
+            const query = document.getElementById('search').value.toLowerCase();
+            alert(`Recherche lancée pour : ${query}`);
+        }
+
+        // Fonction pour la connexion
+        function login() {
+            const email = document.getElementById('email-login').value;
+            if (email) {
+                alert(`Connexion réussie pour : ${email}`);
+            } else {
+                alert("Veuillez entrer une adresse e-mail valide.");
+            }
+        }
+
+        // Fonction pour l'inscription
+        function signup() {
+            const email = document.getElementById('email-signup').value;
+            if (email) {
+                alert(`Inscription réussie pour : ${email}`);
+            } else {
+                alert("Veuillez entrer une adresse e-mail valide.");
+            }
         }
     </script>
 </body>
