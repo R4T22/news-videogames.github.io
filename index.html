@@ -3,155 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualités et Astuces des Jeux Vidéo</title>
+    <title>Actualités Jeux Vidéo</title>
     <style>
-        /* Styles globaux */
+        /* Global Styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1b2838;
-            color: #c7d5e0;
+            background-color: #121212;
+            color: #e0e0e0;
         }
 
-        /* En-tête principal */
+        /* Header */
         header {
-            background-color: #171a21;
-            padding: 10px 20px;
+            background-color: #1b2838;
+            color: white;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        header .navbar {
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            align-items: center;
+            padding: 0 20px;
         }
-        header h1 {
-            color: #66c0f4;
-            margin: 0;
-            font-size: 1.8em;
-        }
-        header nav {
+
+        header .navbar .menu {
             display: flex;
             gap: 15px;
         }
-        header nav a {
-            color: #c7d5e0;
+
+        header .navbar a {
+            color: white;
             text-decoration: none;
+            padding: 10px 15px;
             font-size: 1em;
-            padding: 5px 10px;
+            background-color: #2a475e;
+            border-radius: 4px;
         }
-        header nav a:hover {
-            background-color: #66c0f4;
-            color: #1b2838;
+
+        header .navbar a:hover {
+            background-color: #4c6f91;
+        }
+
+        header .navbar .search-bar {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        header .navbar .search-bar input {
+            width: 70%;
+            padding: 10px;
             border-radius: 5px;
-        }
-        header button {
-            background-color: #66c0f4;
-            color: #1b2838;
             border: none;
-            padding: 8px 15px;
+        }
+
+        header .navbar .search-bar button {
+            padding: 10px 15px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        header .navbar .search-bar button:hover {
+            background-color: #66bb6a;
+        }
+
+        header .navbar .auth-buttons button {
+            background-color: #2a475e;
+            color: white;
+            border: none;
+            padding: 10px 15px;
             border-radius: 5px;
             cursor: pointer;
-            font-size: 1em;
         }
 
-        /* Disposition principale */
-        .main-container {
-            display: flex;
-            margin-top: 10px;
+        header .navbar .auth-buttons button:hover {
+            background-color: #4c6f91;
         }
 
-        /* Barre latérale */
-        .sidebar {
-            width: 250px;
-            background-color: #171a21;
-            padding: 15px;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-        }
-        .sidebar h2 {
-            color: #66c0f4;
-            font-size: 1.2em;
-            margin-bottom: 10px;
-        }
-        .sidebar ul {
-            list-style: none;
-            padding: 0;
-        }
-        .sidebar ul li {
-            margin-bottom: 10px;
-        }
-        .sidebar ul li a {
-            text-decoration: none;
-            color: #c7d5e0;
-            display: block;
-            padding: 5px 10px;
-            font-size: 1em;
-        }
-        .sidebar ul li a:hover {
-            background-color: #66c0f4;
-            color: #1b2838;
-            border-radius: 5px;
-        }
-
-        /* Section principale */
-        .content {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-        }
-        .category-title {
-            color: #66c0f4;
-            font-size: 1.8em;
-            margin-top: 20px;
-            margin-bottom: 10px;
-        }
-        .news-card {
-            background-color: #2a475e;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        }
-        .news-card img {
-            max-width: 100%;
-            border-radius: 8px;
-            margin-bottom: 15px;
-        }
-        .news-card h2 {
-            color: #66c0f4;
-            margin-bottom: 10px;
-            font-size: 1.5em;
-        }
-        .news-card p {
-            font-size: 1em;
-            color: #c7d5e0;
-            line-height: 1.6em;
-        }
-
-        /* Astuces Section */
-        .tips-section {
-            background-color: #2a475e;
-            padding: 20px;
-            margin-top: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-        }
-        .tips-section h2 {
-            color: #66c0f4;
-            font-size: 1.8em;
-            margin-bottom: 10px;
-        }
-        .tips-card {
-            background-color: #1f4d6d;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            color: #c7d5e0;
-        }
-        .tips-card h3 {
-            color: #c7d5e0;
-            font-size: 1.4em;
-        }
-
-        /* Fenêtre modale */
+        /* Modal Styles */
         .modal {
             display: none;
             position: fixed;
@@ -159,103 +98,190 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1001;
+            justify-content: center;
+            align-items: center;
         }
+
+        .modal.active {
+            display: flex;
+        }
+
         .modal-content {
-            background: #2a475e;
-            margin: 10% auto;
+            background-color: #1b2838;
             padding: 20px;
-            width: 90%;
-            max-width: 400px;
             border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            width: 400px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
         }
+
         .modal-content h2 {
-            color: #66c0f4;
-            margin-bottom: 15px;
+            color: #4caf50;
+            margin-bottom: 20px;
         }
+
         .modal-content input {
-            width: 90%;
+            width: 100%;
             padding: 10px;
             margin-bottom: 15px;
-            font-size: 1em;
+            border-radius: 5px;
+            border: none;
         }
+
         .modal-content button {
-            background-color: #66c0f4;
-            color: #1b2838;
+            padding: 10px;
+            width: 100%;
+            background-color: #4caf50;
+            color: white;
             border: none;
-            padding: 10px 20px;
-            font-size: 1em;
+            border-radius: 5px;
             cursor: pointer;
         }
-        .close-modal {
-            background: #aaa;
-            color: #fff;
+
+        .modal-content button:hover {
+            background-color: #66bb6a;
+        }
+
+        /* Content Sections */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            border-bottom: 2px solid #4c6f91;
+            padding-bottom: 10px;
+            color: #4caf50;
+        }
+
+        .card-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background-color: #1b2838;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+            width: 300px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .card h3 {
+            padding: 10px 15px;
+            color: #e0e0e0;
+        }
+
+        .card p {
+            padding: 0 15px 15px;
+            color: #b0b0b0;
+        }
+
+        .card button {
+            margin: 10px 15px;
+            padding: 10px;
+            width: calc(100% - 30px);
+            background-color: #4caf50;
+            color: white;
             border: none;
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            font-size: 1.2em;
+            border-radius: 5px;
             cursor: pointer;
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
+        }
+
+        .card button:hover {
+            background-color: #66bb6a;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1b2838;
+            color: #b0b0b0;
+            text-align: center;
+            padding: 20px;
         }
     </style>
 </head>
 <body>
-    <!-- En-tête -->
+
+    <!-- Header -->
     <header>
-        <h1>Actualités et Astuces des Jeux Vidéo</h1>
-        <nav>
-            <a href="#">Accueil</a>
-            <a href="#">Nouveautés</a>
-            <a href="#">Catégories</a>
-            <a href="#">Offres spéciales</a>
-        </nav>
-        <button onclick="openModal()">Connexion/Inscription</button>
+        <div class="navbar">
+            <div class="menu">
+                <a href="#" onclick="navigate('home')">Accueil</a>
+                <a href="#" onclick="navigate('new-releases')">Nouveautés</a>
+                <a href="#" onclick="navigate('special-offers')">Offres Spéciales</a>
+                <a href="#" onclick="navigate('game-tips')">Astuces</a>
+            </div>
+            <div class="search-bar">
+                <input type="text" placeholder="Rechercher un jeu...">
+                <button>Rechercher</button>
+            </div>
+            <div class="auth-buttons">
+                <button onclick="openModal('login')">Connexion</button>
+                <button onclick="openModal('signup')">Inscription</button>
+            </div>
+        </div>
     </header>
 
-    <!-- Conteneur principal -->
-    <div class="main-container">
-        <!-- Barre latérale -->
-        <aside class="sidebar">
-            <h2>Catégories</h2>
-            <ul>
-                <li><a href="#releases">Prochaines Sorties</a></li>
-                <li><a href="#rpg">RPG</a></li>
-                <li><a href="#action">Action</a></li>
-                <li><a href="#tips">Astuces</a></li>
-            </ul>
-        </aside>
+    <!-- Content -->
+    <div class="container">
+        <!-- Sections (e.g., Nouveautés, Offres, Astuces) -->
+        <!-- Examples here -->
+    </div>
 
-        <!-- Section principale -->
-        <div class="content">
-            <!-- Prochaines Sorties -->
-            <h2 class="category-title" id="releases">Prochaines Sorties</h2>
-            <div class="news-card">
-                <h2>Final Fantasy VII Rebirth</h2>
-                <img src="https://example.com/final-fantasy.jpg" alt="Final Fantasy VII Rebirth">
-                <p><strong>Date de sortie :</strong> Février 2024</p>
-                <p>Découvrez la suite tant attendue du remake de Final Fantasy VII, avec un monde ouvert et une histoire captivante.</p>
-            </div>
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 Actualités Jeux Vidéo. Tous droits réservés.
+    </footer>
 
-            <!-- Action -->
-            <h2 class="category-title" id="action">Action</h2>
-            <div class="news-card">
-                <h2>Marvel's Spider-Man 2</h2>
-                <img src="https://example.com/spiderman2.jpg" alt="Spider-Man 2">
-                <p><strong>Date de sortie :</strong> Octobre 2023</p>
-                <p>Jouez en tant que Peter Parker et Miles Morales dans cette suite palpitante.</p>
-            </div>
+    <!-- Modals -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <h2>Connexion</h2>
+            <input type="email" placeholder="Adresse email">
+            <input type="password" placeholder="Mot de passe">
+            <button>Se connecter</button>
+        </div>
+    </div>
 
-            <!-- Astuces -->
-            <div class="tips-section" id="tips">
-                <h2>Astuces de Jeux</h2>
-                <div class="tips-card">
-                    <h3>Astuces pour Elden Ring</h3>
-                    <p>Explorez la carte minutieusement pour trouver des fragments de carte, des armures rares, et des points d'amélioration d'armes.</p>
-                </div>
-               
+    <div id="signup-modal" class="modal">
+        <div class="modal-content">
+            <h2>Inscription</h2>
+            <input type="text" placeholder="Nom d'utilisateur">
+            <input type="email" placeholder="Adresse email">
+            <input type="password" placeholder="Mot de passe">
+            <button>S'inscrire</button>
+        </div>
+    </div>
+
+    <script>
+        function openModal(type) {
+            const modal = document.getElementById(`${type}-modal`);
+            modal.classList.add('active');
+        }
+
+        function navigate(page) {
+            alert(`Naviguer vers : ${page}`);
+        }
+    </script>
+</body>
+</html>
+
