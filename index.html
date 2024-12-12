@@ -7,277 +7,177 @@
     <style>
         /* Global Styles */
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #1a1a1a;
-            color: #e0e0e0;
+            background-color: #f9f9f9;
         }
 
         /* Header */
         header {
-            background-color: #1f2f46;
+            background-color: #333;
             color: white;
-            padding: 10px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
+            padding: 20px 0;
         }
-
-        header .navbar {
+        header h1 {
+            text-align: center;
+            margin: 0;
+        }
+        nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0 20px;
+            padding: 10px 20px;
+            background-color: #444;
         }
-
-        header .navbar .menu {
-            display: flex;
-            gap: 15px;
-        }
-
-        header .navbar a {
+        nav a {
             color: white;
             text-decoration: none;
-            padding: 10px 15px;
-            font-size: 1em;
-            background-color: #2a475e;
+            padding: 10px 20px;
+            margin: 0 5px;
+            background-color: #555;
             border-radius: 4px;
         }
-
-        header .navbar a:hover {
-            background-color: #4c6f91;
+        nav a:hover {
+            background-color: #666;
+        }
+        nav .dropdown {
+            position: relative;
+        }
+        nav .dropdown select {
+            background-color: #555;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
         }
 
-        header .navbar .search-bar {
-            flex: 1;
+        /* Search Bar */
+        .search-bar {
+            margin: 20px auto;
             display: flex;
             justify-content: center;
         }
-
-        header .navbar .search-bar input {
+        .search-bar input {
             width: 60%;
             padding: 10px;
-            border-radius: 5px;
-            border: none;
+            font-size: 1em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
-
-        header .navbar .search-bar button {
-            padding: 10px 15px;
-            background-color: #4caf50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            margin-left: 10px;
-            cursor: pointer;
-        }
-
-        header .navbar .search-bar button:hover {
-            background-color: #66bb6a;
-        }
-
-        header .navbar .lang-select select {
+        .search-bar button {
             padding: 10px;
-            border-radius: 5px;
-            border: none;
-            background-color: #2a475e;
-            color: white;
-        }
-
-        header .navbar .auth-buttons button {
-            background-color: #2a475e;
+            background-color: #333;
             color: white;
             border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
             cursor: pointer;
+            margin-left: 10px;
+            border-radius: 4px;
+        }
+        .search-bar button:hover {
+            background-color: #444;
         }
 
-        header .navbar .auth-buttons button:hover {
-            background-color: #4c6f91;
-        }
-
-        /* Content Sections */
+        /* Main Content */
         .container {
             max-width: 1200px;
             margin: 20px auto;
             padding: 20px;
         }
 
+        /* Section Styles */
         .section {
-            margin-bottom: 40px;
-        }
-
-        .section h2 {
-            border-bottom: 2px solid #4c6f91;
-            padding-bottom: 10px;
-            color: #4caf50;
-        }
-
-        .card-container {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .card {
-            background-color: #2a2a2a;
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: white;
             border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.5);
-            width: 300px;
-            transition: transform 0.3s;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
-
-        .card:hover {
-            transform: translateY(-10px);
-        }
-
-        .card img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-        }
-
-        .card h3 {
-            padding: 10px 15px;
-            color: #e0e0e0;
-        }
-
-        .card p {
-            padding: 0 15px 15px;
-            color: #b0b0b0;
-        }
-
-        .card button {
-            margin: 10px 15px;
-            padding: 10px;
-            width: calc(100% - 30px);
-            background-color: #4caf50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .card button:hover {
-            background-color: #66bb6a;
+        .section img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin-bottom: 10px;
         }
 
         /* Footer */
         footer {
-            background-color: #1f2f46;
-            color: #b0b0b0;
             text-align: center;
             padding: 20px;
-        }
-
-        /* Modal Styles */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 1001;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background-color: #1b2838;
-            padding: 20px;
-            border-radius: 8px;
-            width: 400px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
-        }
-
-        .modal-content h2 {
-            color: #4caf50;
-            margin-bottom: 20px;
-        }
-
-        .modal-content input {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            border: none;
-        }
-
-        .modal-content button {
-            padding: 10px;
-            width: 100%;
-            background-color: #4caf50;
+            background-color: #333;
             color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .modal-content button:hover {
-            background-color: #66bb6a;
         }
     </style>
 </head>
 <body>
-
     <!-- Header -->
     <header>
-        <div class="navbar">
-            <div class="menu">
-                <a href="#">Accueil</a>
-                <a href="#">Nouveautés</a>
-                <a href="#">Offres Spéciales</a>
-                <a href="#">Astuces</a>
+        <h1>Actualités Jeux Vidéo</h1>
+        <nav>
+            <div>
+                <a href="#" onclick="navigate('home')">Accueil</a>
+                <a href="#" onclick="navigate('new-releases')">Nouveautés</a>
+                <a href="#" onclick="navigate('special-offers')">Offres Spéciales</a>
+                <a href="#" onclick="navigate('game-tips')">Astuces</a>
             </div>
-            <div class="search-bar">
-                <input type="text" placeholder="Rechercher un jeu...">
-                <button>Rechercher</button>
-            </div>
-            <div class="lang-select">
-                <select>
+            <div class="dropdown">
+                <label for="language">Langue :</label>
+                <select id="language" onchange="changeLanguage(this.value)">
                     <option value="fr">Français</option>
                     <option value="en">English</option>
                     <option value="es">Español</option>
-                    <option value="de">Deutsch</option>
-                    <!-- Add 46 more languages -->
                 </select>
             </div>
-            <div class="auth-buttons">
-                <button onclick="openModal('login')">Connexion</button>
-                <button onclick="openModal('signup')">Inscription</button>
-            </div>
-        </div>
+        </nav>
     </header>
 
-    <!-- Content -->
-    <div class="container">
+    <!-- Search Bar -->
+    <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Rechercher un jeu ou une actualité...">
+        <button onclick="performSearch()">Rechercher</button>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container" id="content">
+        <h2>Bienvenue sur Actualités Jeux Vidéo</h2>
+        <p>Découvrez toutes les dernières nouveautés, offres spéciales, et astuces pour les jeux vidéo les plus populaires !</p>
         <div class="section">
-            <h2>Nouveautés</h2>
-            <div class="card-container">
-                <!-- Add cards for new games -->
+            <h3>Dernières Nouveautés</h3>
+            <div>
+                <img src="https://via.placeholder.com/800x400" alt="Nouvelle sortie">
+                <p><strong>Cyberpunk 2077: Phantom Liberty</strong></p>
+                <p>Découvrez l'extension tant attendue avec des missions passionnantes et des nouveaux personnages.</p>
+            </div>
+            <div>
+                <img src="https://via.placeholder.com/800x400" alt="Nouvelle sortie">
+                <p><strong>The Last of Us Part III</strong></p>
+                <p>Préparez-vous pour une nouvelle aventure captivante avec Ellie et de nouveaux personnages.</p>
             </div>
         </div>
-
         <div class="section">
-            <h2>Offres Spéciales</h2>
-            <div class="card-container">
-                <!-- Add cards for special offers -->
+            <h3>Offres Spéciales</h3>
+            <div>
+                <img src="https://via.placeholder.com/800x400" alt="Offre spéciale">
+                <p><strong>Promotion Steam : RPG Épique</strong></p>
+                <p>Profitez de -50% sur les grands RPG comme The Witcher 3 et Skyrim.</p>
+            </div>
+            <div>
+                <img src="https://via.placeholder.com/800x400" alt="Offre spéciale">
+                <p><strong>Pack Assassin's Creed</strong></p>
+                <p>Collection complète Assassin's Creed à -70% pour une durée limitée !</p>
             </div>
         </div>
-
         <div class="section">
-            <h2>Astuces</h2>
-            <div class="card-container">
-                <!-- Add cards for game tips -->
+            <h3>Astuces Jeux Vidéo</h3>
+            <div>
+                <img src="https://via.placeholder.com/800x400" alt="Astuce">
+                <p><strong>Astuces pour Elden Ring</strong></p>
+                <p>Découvrez comment optimiser votre personnage et vaincre les boss les plus coriaces.</p>
+            </div>
+            <div>
+                <img src="https://via.placeholder.com/800x400" alt="Astuce">
+                <p><strong>Astuces pour Fortnite</strong></p>
+                <p>Apprenez les meilleures stratégies pour gagner vos parties et améliorer votre construction.</p>
             </div>
         </div>
     </div>
@@ -287,32 +187,53 @@
         &copy; 2024 Actualités Jeux Vidéo. Tous droits réservés.
     </footer>
 
-    <!-- Modals -->
-    <div id="login-modal" class="modal">
-        <div class="modal-content">
-            <h2>Connexion</h2>
-            <input type="email" placeholder="Adresse email">
-            <input type="password" placeholder="Mot de passe">
-            <button>Se connecter</button>
-        </div>
-    </div>
-
-    <div id="signup-modal" class="modal">
-        <div class="modal-content">
-            <h2>Inscription</h2>
-            <input type="text" placeholder="Nom d'utilisateur">
-            <input type="email" placeholder="Adresse email">
-            <input type="password" placeholder="Mot de passe">
-            <button>S'inscrire</button>
-        </div>
-    </div>
-
     <script>
-        function openModal(type) {
-            const modal = document.getElementById(`${type}-modal`);
-            modal.classList.add('active');
+        const pages = {
+            home: `
+                <h2>Bienvenue sur Actualités Jeux Vidéo</h2>
+                <p>Explorez les dernières actualités, offres spéciales et astuces pour vos jeux préférés !</p>
+            `,
+            "new-releases": `
+                <h2>Nouveautés</h2>
+                <div class="section">
+                    <h3>Cyberpunk 2077: Phantom Liberty</h3>
+                    <img src="https://via.placeholder.com/800x400" alt="Cyberpunk">
+                    <p>Découvrez une extension palpitante avec des missions passionnantes et des nouveaux personnages.</p>
+                </div>
+            `,
+            "special-offers": `
+                <h2>Offres Spéciales</h2>
+                <div class="section">
+                    <h3>Promo Steam - RPG Épique</h3>
+                    <img src="https://via.placeholder.com/800x400" alt="Promo RPG">
+                    <p>-50% sur les RPG populaires comme The Witcher 3 et Skyrim !</p>
+                </div>
+            `,
+            "game-tips": `
+                <h2>Astuces Jeux Vidéo</h2>
+                <div class="section">
+                    <h3>Stratégies pour Fortnite</h3>
+                    <img src="https://via.placeholder.com/800x400" alt="Astuce Fortnite">
+                    <p>Apprenez à gagner plus de parties avec des astuces avancées.</p>
+                </div>
+            `
+        };
+
+        function navigate(page) {
+            const content = document.getElementById("content");
+            content.innerHTML = pages[page] || "<h2>Page non trouvée</h2>";
         }
+
+        function performSearch() {
+            const query = document.getElementById('searchInput').value;
+            alert(`Recherche en cours pour : ${query}`);
+        }
+
+        function changeLanguage(lang) {
+            alert(`Langue changée en : ${lang}`);
+        }
+
+        navigate("home");
     </script>
 </body>
 </html>
-
