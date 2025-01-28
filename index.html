@@ -3,279 +3,136 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Actualités des Jeux Vidéo</title>
-    <style>
-        /* Styles généraux */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px 0;
-            text-align: center;
-        }
-
-        header h1 {
-            margin: 0;
-        }
-
-        nav {
-            background-color: #444;
-            padding: 10px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 1rem;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        .container {
-            padding: 20px;
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        /* Barre de recherche */
-        .search-bar {
-            display: flex;
-            margin-bottom: 20px;
-            justify-content: center;
-        }
-
-        .search-bar input {
-            padding: 10px;
-            width: 300px;
-            border: 1px solid #ccc;
-            border-radius: 5px 0 0 5px;
-        }
-
-        .search-bar button {
-            padding: 10px;
-            border: none;
-            background-color: #007bff;
-            color: #fff;
-            border-radius: 0 5px 5px 0;
-            cursor: pointer;
-        }
-
-        .search-bar button:hover {
-            background-color: #0056b3;
-        }
-
-        /* Sections principales */
-        .section {
-            margin-bottom: 30px;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .section h2 {
-            margin-top: 0;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background-color: #fafafa;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .card img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
-        }
-
-        .card h3 {
-            font-size: 1.2rem;
-            margin: 10px 0;
-        }
-
-        /* Menu déroulant pour les langues */
-        .lang-select {
-            margin-left: 20px;
-            padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-
-        /* Pied de page */
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 20px 0;
-        }
-
-        /* Boutons d'inscription et de connexion */
-        .auth-buttons {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .auth-buttons a {
-            text-decoration: none;
-            padding: 10px 20px;
-            margin: 0 10px;
-            background-color: #007bff;
-            color: #fff;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        .auth-buttons a:hover {
-            background-color: #0056b3;
-        }
-    </style>
+    <title>Gaming Hub - Actualités, Astuces et Offres</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- En-tête -->
-    <header>
-        <h1>Actualités des Jeux Vidéo</h1>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <h1><a href="index.html">Gaming Hub</a></h1>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#actualites">Actualités</a></li>
+                    <li><a href="#astuces">Astuces</a></li>
+                    <li><a href="#offres">Offres Spéciales</a></li>
+                </ul>
+            </nav>
+            <div class="auth-actions">
+                <button id="login-btn">Connexion</button>
+                <button id="signup-btn">Inscription</button>
+                <select id="language-switcher">
+                    <option value="fr">Français</option>
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="de">Deutsch</option>
+                    <!-- Ajouter d'autres langues ici -->
+                </select>
+            </div>
+        </div>
     </header>
 
-    <!-- Navigation -->
-    <nav>
-        <div>
-            <a href="#accueil">Accueil</a>
-            <a href="#actualites">Actualités</a>
-            <a href="#astuces">Astuces</a>
-            <a href="#offres">Offres Spéciales</a>
+    <!-- Search Bar -->
+    <section class="search-bar">
+        <div class="container">
+            <input type="text" id="search-input" placeholder="Rechercher des jeux, actualités ou astuces...">
+            <button id="search-btn">Rechercher</button>
         </div>
-        <div>
-            <select class="lang-select" id="langSelect">
-                <option value="fr">Français</option>
-                <option value="en">English</option>
-                <option value="es">Español</option>
-                <option value="de">Deutsch</option>
-                <option value="it">Italiano</option>
-                <option value="jp">日本語</option>
-                <option value="kr">한국어</option>
-                <option value="zh">中文</option>
-                <!-- Ajoutez plus de langues si nécessaire -->
-            </select>
-        </div>
-    </nav>
+    </section>
 
-    <!-- Barre de recherche -->
-    <div class="search-bar">
-        <input type="text" id="search" placeholder="Rechercher un jeu ou une actualité...">
-        <button onclick="search()">Rechercher</button>
-    </div>
+    <!-- Main Content -->
+    <main class="container">
+        <!-- Accueil -->
+        <section id="accueil" class="section">
+            <h2>Bienvenue sur Gaming Hub</h2>
+            <p>Découvrez les dernières actualités, astuces, et offres spéciales pour vos jeux préférés !</p>
+        </section>
 
-    <!-- Contenu principal -->
-    <div class="container">
-        <!-- Section Accueil -->
-        <div id="accueil" class="section">
-            <h2>Bienvenue sur le site des actualités des jeux vidéo</h2>
-            <p>Découvrez les dernières actualités, astuces et offres spéciales pour vos jeux préférés !</p>
-        </div>
-
-        <!-- Section Actualités -->
-        <div id="actualites" class="section">
-            <h2>Actualités</h2>
+        <!-- Actualités -->
+        <section id="actualites" class="section">
+            <h2>Actualités des Jeux Vidéo</h2>
             <div class="grid">
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x200" alt="S.T.A.L.K.E.R. 2">
-                    <h3>S.T.A.L.K.E.R. 2</h3>
-                    <p>Date de sortie : 20 novembre 2024</p>
-                </div>
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x200" alt="Assassin’s Creed Japon">
-                    <h3>Assassin’s Creed Japon</h3>
-                    <p>Date de sortie : 14 février 2025</p>
-                </div>
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x200" alt="Borderlands 4">
-                    <h3>Borderlands 4</h3>
-                    <p>Date de sortie : 2025</p>
-                </div>
+                <article class="card">
+                    <img src="https://via.placeholder.com/300x200" alt="Actualité 1">
+                    <h3>S.T.A.L.K.E.R. 2 : Sortie annoncée</h3>
+                    <p>Le jeu très attendu sortira en novembre 2024 avec des graphismes époustouflants.</p>
+                </article>
+                <article class="card">
+                    <img src="https://via.placeholder.com/300x200" alt="Actualité 2">
+                    <h3>Assassin's Creed Japon</h3>
+                    <p>Ubisoft révèle un nouvel opus dans l’univers féodal japonais.</p>
+                </article>
             </div>
-        </div>
+        </section>
 
-        <!-- Section Astuces -->
-        <div id="astuces" class="section">
-            <h2>Astuces</h2>
+        <!-- Astuces -->
+        <section id="astuces" class="section">
+            <h2>Astuces de Jeux Vidéo</h2>
             <div class="grid">
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x200" alt="Astuces pour Elden Ring">
+                <article class="card">
+                    <img src="https://via.placeholder.com/300x200" alt="Astuce 1">
                     <h3>Astuces pour Elden Ring</h3>
-                    <p>Apprenez à optimiser votre personnage pour les combats les plus difficiles.</p>
-                </div>
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x200" alt="Secrets de Zelda : TOTK">
-                    <h3>Secrets de Zelda : TOTK</h3>
+                    <p>Optimisez votre build et découvrez des secrets cachés.</p>
+                </article>
+                <article class="card">
+                    <img src="https://via.placeholder.com/300x200" alt="Astuce 2">
+                    <h3>Zelda TOTK : Guide complet</h3>
                     <p>Découvrez les sanctuaires cachés et les armes légendaires.</p>
-                </div>
+                </article>
             </div>
-        </div>
+        </section>
 
-        <!-- Section Offres -->
-        <div id="offres" class="section">
+        <!-- Offres Spéciales -->
+        <section id="offres" class="section">
             <h2>Offres Spéciales</h2>
             <div class="grid">
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x200" alt="Promo Cyberpunk 2077">
-                    <h3>Cyberpunk 2077</h3>
-                    <p>En promotion à -50% jusqu’au 31 janvier 2025.</p>
-                </div>
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x200" alt="Promo Witcher 3">
-                    <h3>The Witcher 3</h3>
-                    <p>Offre spéciale : seulement 10€ pendant une semaine.</p>
-                </div>
+                <article class="card">
+                    <img src="https://via.placeholder.com/300x200" alt="Offre 1">
+                    <h3>Cyberpunk 2077 à -50%</h3>
+                    <p>Promotion exceptionnelle jusqu'au 31 janvier 2025.</p>
+                </article>
+                <article class="card">
+                    <img src="https://via.placeholder.com/300x200" alt="Offre 2">
+                    <h3>The Witcher 3 à 10€</h3>
+                    <p>Découvrez ou redécouvrez ce chef-d'œuvre à prix réduit.</p>
+                </article>
             </div>
-        </div>
+        </section>
+    </main>
 
-        <!-- Boutons d'inscription et de connexion -->
-        <div class="auth-buttons">
-            <a href="#connexion">Connexion</a>
-            <a href="#inscription">Inscription</a>
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>&copy; 2025 Gaming Hub. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Modals -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <h3>Connexion</h3>
+            <form>
+                <input type="email" placeholder="Adresse email" required>
+                <input type="password" placeholder="Mot de passe" required>
+                <button type="submit">Se connecter</button>
+            </form>
+        </div>
+    </div>
+    <div id="signup-modal" class="modal">
+        <div class="modal-content">
+            <h3>Inscription</h3>
+            <form>
+                <input type="text" placeholder="Nom d'utilisateur" required>
+                <input type="email" placeholder="Adresse email" required>
+                <input type="password" placeholder="Mot de passe" required>
+                <button type="submit">S'inscrire</button>
+            </form>
         </div>
     </div>
 
-    <!-- Pied de page -->
-    <footer>
-        <p>&copy; 2025 Actualités des Jeux Vidéo - Tous droits réservés.</p>
-    </footer>
-
-    <script>
-        // Changement de langue
-        document.getElementById('langSelect').addEventListener('change', (e) => {
-            const selectedLang = e.target.value;
-            alert(`Langue changée en : ${selectedLang}`);
-        });
-
-        // Fonction de recherche
-        function search() {
-            const query = document.getElementById('search').value.toLowerCase();
-            alert(`Recherche lancée pour : ${query}`);
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
