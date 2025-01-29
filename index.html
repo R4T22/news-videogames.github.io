@@ -3,221 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaming Hub - Actualités des Jeux Vidéo</title>
-    <style>
-        /* --- Styles de base --- */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #1e1e1e;
-            color: #f5f5f5;
-        }
-        header {
-            background: #151515;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        header h1 {
-            color: #fff;
-            font-size: 24px;
-            margin: 0;
-        }
-        .menu {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        .menu a {
-            color: #bbb;
-            text-decoration: none;
-            font-size: 18px;
-            padding: 8px 12px;
-            transition: all 0.3s ease;
-        }
-        .menu a:hover {
-            color: #fff;
-            background: #444;
-            border-radius: 5px;
-        }
-        .language-select {
-            margin-left: 20px;
-            padding: 8px;
-            font-size: 16px;
-            border: 1px solid #444;
-            background: #333;
-            color: #fff;
-            border-radius: 5px;
-        }
-        main {
-            padding: 20px;
-        }
-        .section {
-            margin-bottom: 40px;
-        }
-        .section h2 {
-            font-size: 24px;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #444;
-            padding-bottom: 8px;
-        }
-        .card-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .card {
-            background: #222;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-            transition: all 0.3s ease;
-        }
-        .card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-        .card h3 {
-            font-size: 18px;
-            margin: 15px 10px 5px;
-        }
-        .card p {
-            font-size: 14px;
-            margin: 0 10px 15px;
-            color: #aaa;
-        }
-        .card:hover {
-            transform: scale(1.03);
-        }
-        footer {
-            text-align: center;
-            padding: 15px 0;
-            background: #151515;
-            color: #aaa;
-            font-size: 14px;
-        }
-        /* --- Barre de recherche --- */
-        .search-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 30px;
-        }
-        .search-container input {
-            width: 50%;
-            padding: 10px 15px;
-            font-size: 16px;
-            border: 1px solid #444;
-            border-radius: 5px;
-            background: #333;
-            color: #fff;
-        }
-        .search-container button {
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            background: #444;
-            color: #fff;
-            border-radius: 5px;
-            margin-left: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .search-container button:hover {
-            background: #555;
-        }
-    </style>
+    <title>Gaming Hub - Actus, Astuces & Offres</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <!-- ✅ HEADER -->
     <header>
         <h1>Gaming Hub</h1>
         <nav class="menu">
             <a href="#actualites">Actualités</a>
             <a href="#astuces">Astuces</a>
             <a href="#offres">Offres Spéciales</a>
+            <a href="#" onclick="openLogin()">Connexion</a>
             <select class="language-select" onchange="changeLanguage(this.value)">
                 <option value="fr">Français</option>
                 <option value="en">English</option>
                 <option value="es">Español</option>
                 <option value="de">Deutsch</option>
-                <!-- Ajoutez d'autres langues ici -->
+                <option value="it">Italiano</option>
+                <option value="jp">日本語</option>
             </select>
         </nav>
     </header>
 
-    <main>
-        <div class="search-container">
-            <input type="text" id="search-bar" placeholder="Rechercher un jeu, une astuce, une offre...">
-            <button onclick="search()">Rechercher</button>
+    <!-- ✅ BARRE DE RECHERCHE -->
+    <div class="search-container">
+        <input type="text" id="search-bar" placeholder="Rechercher un jeu, une astuce, une offre...">
+        <button onclick="search()">🔍</button>
+    </div>
+
+    <!-- ✅ SECTION ACTUALITÉS -->
+    <section id="actualites" class="section">
+        <h2>🔥 Dernières Actualités</h2>
+        <div class="card-container">
+            <div class="card">
+                <img src="img/stalker2.jpg" alt="S.T.A.L.K.E.R. 2">
+                <h3>S.T.A.L.K.E.R. 2</h3>
+                <p>Sortie prévue le 20 novembre 2024. Plongez dans la zone radioactive de Tchernobyl.</p>
+            </div>
+            <div class="card">
+                <img src="img/assassinscreed.jpg" alt="Assassin's Creed Japon">
+                <h3>Assassin's Creed Japon</h3>
+                <p>Ubisoft dévoile un opus dans l'ère Sengoku prévu pour 2025.</p>
+            </div>
+            <div class="card">
+                <img src="img/gta6.jpg" alt="GTA VI">
+                <h3>GTA VI</h3>
+                <p>Rockstar annonce une bande-annonce officielle pour GTA VI le 10 décembre 2025.</p>
+            </div>
         </div>
+    </section>
 
-        <section id="actualites" class="section">
-            <h2>Actualités</h2>
-            <div class="card-container">
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x150" alt="News 1">
-                    <h3>S.T.A.L.K.E.R. 2</h3>
-                    <p>Sortie prévue le 20 novembre 2024. Explorez la zone radioactive de Tchernobyl.</p>
-                </div>
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x150" alt="News 2">
-                    <h3>Assassin's Creed Japon</h3>
-                    <p>Plongez dans l'ère Sengoku avec ce nouvel opus attendu pour 2025.</p>
-                </div>
-                <!-- Ajoutez d'autres cartes ici -->
+    <!-- ✅ SECTION ASTUCES -->
+    <section id="astuces" class="section">
+        <h2>🕹️ Astuces et Guides</h2>
+        <div class="card-container">
+            <div class="card">
+                <img src="img/eldenring.jpg" alt="Guide Elden Ring">
+                <h3>Guide complet Elden Ring</h3>
+                <p>Les meilleures stratégies pour battre Malenia sans trop souffrir.</p>
             </div>
-        </section>
-
-        <section id="astuces" class="section">
-            <h2>Astuces</h2>
-            <div class="card-container">
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x150" alt="Astuce 1">
-                    <h3>Guide pour Elden Ring</h3>
-                    <p>Découvrez comment battre les boss les plus difficiles facilement.</p>
-                </div>
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x150" alt="Astuce 2">
-                    <h3>Stratégies pour Fortnite</h3>
-                    <p>Devenez un pro de Fortnite avec nos astuces incontournables.</p>
-                </div>
-                <!-- Ajoutez d'autres cartes ici -->
+            <div class="card">
+                <img src="img/fortnite.jpg" alt="Stratégie Fortnite">
+                <h3>Pro tips Fortnite</h3>
+                <p>Devenez un pro en Battle Royale avec ces stratégies infaillibles.</p>
             </div>
-        </section>
-
-        <section id="offres" class="section">
-            <h2>Offres Spéciales</h2>
-            <div class="card-container">
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x150" alt="Offre 1">
-                    <h3>50% sur Cyberpunk 2077</h3>
-                    <p>Profitez de cette incroyable réduction sur Steam dès maintenant !</p>
-                </div>
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x150" alt="Offre 2">
-                    <h3>Red Dead Redemption II</h3>
-                    <p>Offre spéciale à ne pas manquer : 40% de réduction.</p>
-                </div>
-                <!-- Ajoutez d'autres cartes ici -->
+            <div class="card">
+                <img src="img/valorant.jpg" alt="Valorant">
+                <h3>Valorant - Améliorez votre aim</h3>
+                <p>Découvrez les meilleures techniques pour viser comme un pro.</p>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
+    <!-- ✅ SECTION OFFRES -->
+    <section id="offres" class="section">
+        <h2>💸 Offres Spéciales</h2>
+        <div class="card-container">
+            <div class="card">
+                <img src="img/cyberpunk.jpg" alt="Cyberpunk 2077">
+                <h3>50% sur Cyberpunk 2077</h3>
+                <p>Promotion exceptionnelle sur Steam, à ne pas manquer !</p>
+            </div>
+            <div class="card">
+                <img src="img/rdr2.jpg" alt="Red Dead Redemption II">
+                <h3>RDR 2 à -40%</h3>
+                <p>Le jeu culte de Rockstar en promotion pour une durée limitée.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ✅ FOOTER -->
     <footer>
-        <p>&copy; 2025 Gaming Hub. Tous droits réservés.</p>
+        <p>&copy; 2025 Gaming Hub - Tous droits réservés.</p>
     </footer>
 
+    <!-- ✅ SCRIPT JS -->
     <script>
         function search() {
             const query = document.getElementById("search-bar").value;
-            alert(`Recherche pour : ${query}`);
+            alert(`🔍 Recherche en cours pour : ${query}`);
         }
 
         function changeLanguage(lang) {
-            alert(`Changement de langue : ${lang}`);
+            alert(`🌍 Langue changée en : ${lang}`);
+        }
+
+        function openLogin() {
+            alert("🔐 Fonction de connexion en cours de développement !");
         }
     </script>
+
 </body>
 </html>
+body {
+    font-family: Arial, sans-serif;
+    background: #1e1e1e;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+header {
+    background: #151515;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.menu a {
+    color: #bbb;
+    text-decoration: none;
+    padding: 8px 12px;
+}
+.menu a:hover {
+    color: #fff;
+}
+.search-container {
+    text-align: center;
+    margin: 20px 0;
+}
+.search-container input {
+    padding: 10px;
+    border-radius: 5px;
+}
+.search-container button {
+    padding: 10px;
+    border-radius: 5px;
+    background: #444;
+    color: white;
+    cursor: pointer;
+}
+.section {
+    padding: 20px;
+}
+.card-container {
+    display: flex;
+    gap: 20px;
+}
+.card {
+    background: #222;
+    padding: 15px;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+.card img {
+    width: 100%;
+    border-radius: 5px;
+}
+.card:hover {
+    transform: scale(1.05);
+}
+footer {
+    text-align: center;
+    background: #151515;
+    padding: 10px;
+}
