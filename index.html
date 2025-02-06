@@ -1,223 +1,108 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaming Hub - Actualités des Jeux Vidéo</title>
-    <style>
-        /* --- Styles de base --- */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #1e1e1e;
-            color: #f5f5f5;
-        }
-        header {
-            background: #151515;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        header h1 {
-            color: #fff;
-            font-size: 24px;
-            margin: 0;
-        }
-        .menu {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-        .menu a {
-            color: #bbb;
-            text-decoration: none;
-            font-size: 18px;
-            padding: 8px 12px;
-            transition: all 0.3s ease;
-        }
-        .menu a:hover {
-            color: #fff;
-            background: #444;
-            border-radius: 5px;
-        }
-        .language-select {
-            margin-left: 20px;
-            padding: 8px;
-            font-size: 16px;
-            border: 1px solid #444;
-            background: #333;
-            color: #fff;
-            border-radius: 5px;
-        }
-        main {
-            padding: 20px;
-        }
-        .section {
-            margin-bottom: 40px;
-        }
-        .section h2 {
-            font-size: 24px;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #444;
-            padding-bottom: 8px;
-        }
-        .card-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-        .card {
-            background: #222;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-            transition: all 0.3s ease;
-        }
-        .card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
-        .card h3 {
-            font-size: 18px;
-            margin: 15px 10px 5px;
-        }
-        .card p {
-            font-size: 14px;
-            margin: 0 10px 15px;
-            color: #aaa;
-        }
-        .card:hover {
-            transform: scale(1.03);
-        }
-        footer {
-            text-align: center;
-            padding: 15px 0;
-            background: #151515;
-            color: #aaa;
-            font-size: 14px;
-        }
-        /* --- Barre de recherche --- */
-        .search-container {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 30px;
-        }
-        .search-container input {
-            width: 50%;
-            padding: 10px 15px;
-            font-size: 16px;
-            border: 1px solid #444;
-            border-radius: 5px;
-            background: #333;
-            color: #fff;
-        }
-        .search-container button {
-            padding: 10px 20px;
-            font-size: 16px;
-            border: none;
-            background: #444;
-            color: #fff;
-            border-radius: 5px;
-            margin-left: 10px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .search-container button:hover {
-            background: #555;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Gaming Hub</h1>
-        <nav class="menu">
-            <a href="#actualites">Actualités</a>
-            <a href="#astuces">Astuces</a>
-            <a href="#offres">Offres Spéciales</a>
-            <select class="language-select" onchange="changeLanguage(this.value)">
-                <option value="fr">Français</option>
-                <option value="en">English</option>
-                <option value="es">Español</option>
-                <option value="de">Deutsch</option>
-                <!-- Ajoutez d'autres langues ici -->
-            </select>
-        </nav>
-    </header>
+require("dotenv").config();
+const express = require("express");
+const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const cors = require("cors");
 
-    <main>
-        <div class="search-container">
-            <input type="text" id="search-bar" placeholder="Rechercher un jeu, une astuce, une offre...">
-            <button onclick="search()">Rechercher</button>
-        </div>
+const app = express();
+const PORT = process.env.PORT || 5000;
 
-        <section id="actualites" class="section">
-            <h2>Actualités</h2>
-            <div class="card-container">
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x150" alt="News 1">
-                    <h3>S.T.A.L.K.E.R. 2</h3>
-                    <p>Sortie prévue le 20 novembre 2024. Explorez la zone radioactive de Tchernobyl.</p>
-                </div>
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x150" alt="News 2">
-                    <h3>Assassin's Creed Japon</h3>
-                    <p>Plongez dans l'ère Sengoku avec ce nouvel opus attendu pour 2025.</p>
-                </div>
-                <!-- Ajoutez d'autres cartes ici -->
-            </div>
-        </section>
+// Middleware
+app.use(cors());
+app.use(bodyParser.json());
 
-        <section id="astuces" class="section">
-            <h2>Astuces</h2>
-            <div class="card-container">
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x150" alt="Astuce 1">
-                    <h3>Guide pour Elden Ring</h3>
-                    <p>Découvrez comment battre les boss les plus difficiles facilement.</p>
-                </div>
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x150" alt="Astuce 2">
-                    <h3>Stratégies pour Fortnite</h3>
-                    <p>Devenez un pro de Fortnite avec nos astuces incontournables.</p>
-                </div>
-                <!-- Ajoutez d'autres cartes ici -->
-            </div>
-        </section>
+// MongoDB Connection
+mongoose
+  .connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.error(err));
 
-        <section id="offres" class="section">
-            <h2>Offres Spéciales</h2>
-            <div class="card-container">
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x150" alt="Offre 1">
-                    <h3>50% sur Cyberpunk 2077</h3>
-                    <p>Profitez de cette incroyable réduction sur Steam dès maintenant !</p>
-                </div>
-                <div class="card">
-                    <img src="https://via.placeholder.com/300x150" alt="Offre 2">
-                    <h3>Red Dead Redemption II</h3>
-                    <p>Offre spéciale à ne pas manquer : 40% de réduction.</p>
-                </div>
-                <!-- Ajoutez d'autres cartes ici -->
-            </div>
-        </section>
-    </main>
+// Models
+const User = mongoose.model("User", new mongoose.Schema({
+  username: String,
+  email: { type: String, unique: true },
+  password: String,
+}));
 
-    <footer>
-        <p>&copy; 2025 Gaming Hub. Tous droits réservés.</p>
-    </footer>
+const Article = mongoose.model("Article", new mongoose.Schema({
+  title: String,
+  content: String,
+  image: String,
+  category: String, // "actualites", "astuces", "offres"
+}));
 
-    <script>
-        function search() {
-            const query = document.getElementById("search-bar").value;
-            alert(`Recherche pour : ${query}`);
-        }
+// Routes
+app.get("/", (req, res) => {
+  res.send("Bienvenue sur l'API Gaming Hub !");
+});
 
-        function changeLanguage(lang) {
-            alert(`Changement de langue : ${lang}`);
-        }
-    </script>
-</body>
-</html>
+// User Registration
+app.post("/register", async (req, res) => {
+  const { username, email, password } = req.body;
+
+  if (!username || !email || !password) {
+    return res.status(400).json({ message: "Tous les champs sont requis." });
+  }
+
+  const hashedPassword = await bcrypt.hash(password, 10);
+
+  const newUser = new User({ username, email, password: hashedPassword });
+
+  try {
+    await newUser.save();
+    res.status(201).json({ message: "Utilisateur inscrit avec succès." });
+  } catch (err) {
+    res.status(400).json({ message: "Erreur lors de l'inscription." });
+  }
+});
+
+// User Login
+app.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+
+  const user = await User.findOne({ email });
+  if (!user) {
+    return res.status(404).json({ message: "Utilisateur non trouvé." });
+  }
+
+  const isMatch = await bcrypt.compare(password, user.password);
+  if (!isMatch) {
+    return res.status(401).json({ message: "Mot de passe incorrect." });
+  }
+
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, { expiresIn: "1h" });
+  res.json({ message: "Connexion réussie.", token });
+});
+
+// Fetch Articles
+app.get("/articles", async (req, res) => {
+  const { category } = req.query;
+
+  const query = category ? { category } : {};
+  const articles = await Article.find(query);
+
+  res.json(articles);
+});
+
+// Add Article (Admin only)
+app.post("/articles", async (req, res) => {
+  const { title, content, image, category } = req.body;
+
+  if (!title || !content || !image || !category) {
+    return res.status(400).json({ message: "Tous les champs sont requis." });
+  }
+
+  const newArticle = new Article({ title, content, image, category });
+
+  try {
+    await newArticle.save();
+    res.status(201).json({ message: "Article ajouté avec succès." });
+  } catch (err) {
+    res.status(400).json({ message: "Erreur lors de l'ajout de l'article." });
+  }
+});
+
+// Start Server
+app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
